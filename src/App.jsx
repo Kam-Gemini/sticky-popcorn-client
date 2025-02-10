@@ -2,6 +2,7 @@ import { Routes, Route, NavLink } from 'react-router'
 
 import AllMovies from './components/AllMovies/AllMovies'
 import SingleMovie from './components/SingleMovie/SingleMovie'
+import Filters from './components/NavMenu/Filters'
 
 function App() {
 
