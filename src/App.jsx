@@ -1,7 +1,7 @@
 import { Routes, Route, NavLink } from 'react-router'
 
-import AllMovies from '../components/AllMovies/AllMovies'
-import SingleMovie from '../components/SingleMovie/SingleMovie'
+import AllMovies from './components/AllMovies/AllMovies'
+import SingleMovie from './components/SingleMovie/SingleMovie'
 
 function App() {
 
