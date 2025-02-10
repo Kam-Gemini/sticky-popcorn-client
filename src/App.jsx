@@ -1,33 +1,24 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { Routes, Route, NavLink } from 'react-router'
+
+import AllMovies from '../components/AllMovies/AllMovies'
+import NavMenu from '../components/NavMenu/NavMenu'
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <nav>
+        <NavMenu />
+      </nav>
+      <main>
+        <Routes>
+          <Route path="/movies" element={<AllMovies />} />
+          <Route path="/posts/:postId" element={<SingleMovie />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="signin" element={<Signin />} />
+        </Routes>
+      </main>
     </>
   )
 }
