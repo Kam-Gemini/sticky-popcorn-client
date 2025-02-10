@@ -3,6 +3,7 @@ import { movieIndex } from '../../services/movieService'
 import MovieGrid from './MovieGrid'
 // import Filters from './Filters';
 import MovieCard from './MovieCard';
+import styles from './AllMovies.module.css'
 
 
 export default function AllMovies() {
@@ -30,7 +31,7 @@ export default function AllMovies() {
             {/* <Filters filterBy={filterBy} setFilterBy={setFilterBy} listAllYears={listAllYears} /> */}
             <MovieGrid>
                 {movies.map(movie => (
-                    <MovieCard key={movie.name} movie={movie} />
+                    <MovieCard key={movie._id} movie={movie} />
                 ))}
             </MovieGrid>
         </main>

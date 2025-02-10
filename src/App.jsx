@@ -1,6 +1,7 @@
 import { Routes, Route, NavLink } from 'react-router'
 
 import AllMovies from '../components/AllMovies/AllMovies'
+import SingleMovie from '../components/SingleMovie/SingleMovie'
 
 function App() {
 
@@ -11,6 +12,7 @@ function App() {
       <main>
         <Routes>
           <Route path="/" element={<AllMovies />} />
+          <Route path="/movies/:movieId" element={<SingleMovie />} />
         </Routes>
       </main>
     </>
