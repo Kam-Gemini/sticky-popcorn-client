@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
+import { movieIndex } from '../../services/movieService'
 import MovieGrid from './MovieGrid'
-import Filters from './Filters';
+// import Filters from './Filters';
 import MovieCard from './MovieCard';
 
 
@@ -26,9 +27,9 @@ export default function AllMovies() {
 
     return (
         <main>
-            <Filters filterBy={filterBy} setFilterBy={setFilterBy} listAllYears={listAllYears} />
+            {/* <Filters filterBy={filterBy} setFilterBy={setFilterBy} listAllYears={listAllYears} /> */}
             <MovieGrid>
-                {results.map(movie => (
+                {movies.map(movie => (
                     <MovieCard key={movie.name} movie={movie} />
                 ))}
             </MovieGrid>
@@ -36,5 +37,5 @@ export default function AllMovies() {
     )
 }
 
-const listAllYears = [...new Set(movies.map(movie => movie.year))].sort((a, b) => a - b)
+// const listAllYears = [...new Set(movies.map(movie => movie.year))].sort((a, b) => a - b)
 

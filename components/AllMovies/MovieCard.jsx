@@ -24,9 +24,9 @@ export default function MovieCard({ movie }) {
             <Heading>{movie.title}</Heading>
             <Image src={movie.poster_url} alt={movie.title} />
             <Paragraph>Year: {movie.year}</Paragraph>
-            <Paragraph>Cast: {movie.cast}</Paragraph>
+            <Paragraph>Cast: {movie.cast.join(', ')}</Paragraph>
             <Paragraph>Director: {movie.director}</Paragraph>
-            <Paragraph>Genre: {movie.genre}</Paragraph>
+            <Paragraph>Genre: {movie.genre.join(', ')}</Paragraph>
             <Paragraph>Runtime: {movie.runtime}</Paragraph>
             <Paragraph>Certificate: {movie.certificate}</Paragraph>
         </Movie>
