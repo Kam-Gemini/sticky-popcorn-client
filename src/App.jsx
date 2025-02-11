@@ -8,6 +8,7 @@ import Signup from './components/Signup/Signup'
 
 import Filters from './components/NavMenu/Filters'
 import AllReviews from './components/AllReviews/AllReviews'
+import SingleReview from "./components/SingleReview/SingleReview"
 
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
           {/* <Route path="signin" element={<Signin />} /> */}
 
           <Route path="/movies/:movieId/reviews" element={<AllReviews />} />
+          <Route path="/movies/:movieId/reviews/:reviewId" element={<SingleReview />} />
 
         </Routes>
       </main>

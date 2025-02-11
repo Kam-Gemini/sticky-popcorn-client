@@ -1,6 +1,6 @@
 import { useState, useEffect, useContext } from "react"
 import { reviewIndex } from "../../services/reviewService.js"
-import { useParams } from "react-router"
+import { useParams, Link } from "react-router"
 
 
 
@@ -32,8 +32,8 @@ export default function AllReviews() {
                             const date = new Date(review.createdAt)
                             return (
                             <div key={review._id} className="review-card">
-                                <h3>{review.title}</h3>
-                                <p>{review.content}</p>
+                                <Link to={`/movies/${movieId}/reviews/${review._id}`}><p>{review.content}</p></Link>
+                                
                                 <p>Written by {review.author.username}</p>
                                 <p>{date.toUTCString()}</p>
                             </div>
