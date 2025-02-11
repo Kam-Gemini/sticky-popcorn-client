@@ -6,8 +6,10 @@ import SingleMovie from './components/SingleMovie/SingleMovie'
 import Signup from './components/Signup/Signup'
 //import Signin from './components/Signin/Signin'
 
-import Filters from './components/NavMenu/Filters'
 import AllReviews from './components/AllReviews/AllReviews'
+
+import NavMenu from './components/NavMenu/NavMenu'
+
 import SingleReview from "./components/SingleReview/SingleReview"
 
 
@@ -16,6 +18,7 @@ function App() {
   return (
     <>
       <nav>
+        <NavMenu />
       </nav>
       <main>
         <Routes>
