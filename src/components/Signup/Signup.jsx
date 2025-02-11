@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router'
 import { signup } from '../../services/userService'
 import { setToken } from '../../utils/auth'
 import { getUserFromToken } from '../../utils/auth'
+
 import { UserContext } from '../../contexts/UserContext'
 
 // Styles
@@ -24,6 +25,8 @@ export default function Signup(){
   // Location variables
   const navigate = useNavigate()
 
+
+  console.log(formData)
   // Events
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -40,6 +43,7 @@ export default function Signup(){
   }
 
   const handleChange = (e) => {
+    console.dir(e.target)
     setErrors({ ...errors, [e.target.name]: '' })
     setFormData({ ...formData, [e.target.name]: e.target.value })
   }
@@ -103,3 +107,10 @@ export default function Signup(){
     </section>
   )
 }
+
+// export default function SignUp(){
+
+// return(
+//   <h1>Sign up</h1>
+// )
+// }

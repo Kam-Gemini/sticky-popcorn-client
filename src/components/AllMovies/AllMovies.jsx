@@ -42,6 +42,7 @@ export default function AllMovies() {
             results = results.filter(movie => movie.year >= 2010 && movie.year <= 2019);
           }
 
+
         if (searchTerm) {
             results = results.filter(movie => 
             movie.title.toLowerCase().startsWith(searchTerm.toLowerCase()))
