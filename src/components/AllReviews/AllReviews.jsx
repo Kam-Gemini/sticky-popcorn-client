@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from "react"
+import { useState, useEffect } from "react"
 import { reviewIndex } from "../../services/reviewService.js"
 import { useParams, Link } from "react-router"
 
@@ -41,6 +41,9 @@ export default function AllReviews() {
                         })
                         : <p>There are no reviews for this movie yet.</p>
                 }
+                <div>
+                    <Link to={`/movies/${movieId}/create-review`}>Add your review</Link>
+                </div>
             </section>
         </>
     )
