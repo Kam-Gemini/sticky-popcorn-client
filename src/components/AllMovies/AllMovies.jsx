@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { movieIndex } from '../../services/movieService'
 import MovieGrid from './MovieGrid'
-// import Filters from './Filters';
+import Filters from '../NavMenu/Filters';
 import MovieCard from './MovieCard';
 import styles from './AllMovies.module.css'
 
@@ -10,33 +10,69 @@ export default function AllMovies() {
 
     // State
     const [movies, setMovies] = useState([])
+    const [displayedMovies, setDisplayedMovies] = useState([])
+    const [filterBy, setFilterBy] = useState('All')
+    const [searchTerm, setSearchTerm] = useState('')
     const [isLoading, setIsLoading] = useState(true)
 
     // On component mount (first render only)
     useEffect(() => {
         movieIndex()
-            .then(data => setMovies(data))
+            .then(data => {
+                setMovies(data)
+                setDisplayedMovies(data)
+            })
             .catch(err => console.log(err))
             .finally(() => setIsLoading(false))
     }, [])
 
+    useEffect(() => {
+        let results = movies
 
-    const [filterBy, setFilterBy] = useState('All')
-    // const results = movies.filter(movie => {
-    //     return movie.year === filterBy || filterBy === 'All'
-    // })
-console.log(movies)
+        if (filterBy === '1970') {
+            results = results.filter(movie => movie.year >= 1970 && movie.year <= 1979);
+            console.log('1970s')
+          } else if (filterBy === '1980') {
+            results = results.filter(movie => movie.year >= 1980 && movie.year <= 1989);
+          } else if (filterBy === '1990') {
+            results = results.filter(movie => movie.year >= 1990 && movie.year <= 1999);
+          } else if (filterBy === '2000') {
+            results = results.filter(movie => movie.year >= 2000 && movie.year <= 2009);
+          } else if (filterBy === '2010') {
+            results = results.filter(movie => movie.year >= 2010 && movie.year <= 2019);
+          }
+
+
+        if (searchTerm) {
+            results = results.filter(movie => 
+            movie.title.toLowerCase().startsWith(searchTerm.toLowerCase()))
+        }
+
+        setDisplayedMovies(results)
+
+    }, [filterBy, searchTerm, movies])
+
+    const handleSearch = (e) => {
+        setSearchTerm(e.target.value.toLowerCase())
+    };
+
     return (
         <main>
-            {/* <Filters filterBy={filterBy} setFilterBy={setFilterBy} listAllYears={listAllYears} /> */}
+            <input 
+            type="search" 
+            name="search" 
+            id="search" 
+            placeholder="Search..." 
+            onChange={handleSearch}
+            value={searchTerm}
+          />
+            <Filters filterBy={filterBy} setFilterBy={setFilterBy}/>
             <MovieGrid>
-                {movies.map(movie => (
+                {displayedMovies.map(movie => (
                     <MovieCard key={movie._id} movie={movie} />
                 ))}
             </MovieGrid>
         </main>
     )
 }
-
-// const listAllYears = [...new Set(movies.map(movie => movie.year))].sort((a, b) => a - b)
 
