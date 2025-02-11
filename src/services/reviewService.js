@@ -7,7 +7,7 @@ export const reviewIndex = async (movieId) => {
         const response = await axios.get(BASE_URL + /movies/`${movieId}/reviews`)
         return response.data
     } catch (error) {
-        console.log(error)
+        console.log("Error fetching reviews", error)
         throw error
     }
 }
