@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { useParams } from 'react-router'
+import { useParams, Link } from 'react-router'
 import {movieShow } from '../../services/movieService'
 
 import styles from './SingleMovie.module.css'
@@ -53,6 +53,9 @@ export default function SingleMovie() {
             <p>Genre: {movie.genre.join(', ')}</p>
             <p>Runtime: {movie.runtime}</p>
             <p>Certificate: {movie.certificate}</p>
+
+            <Link to={`/movies/${movieId}/reviews`}>Read the Reviews
+            </Link>
         </section>
     )
 }
