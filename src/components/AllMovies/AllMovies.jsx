@@ -22,10 +22,10 @@ export default function AllMovies() {
 
 
     const [filterBy, setFilterBy] = useState('All')
-    const results = movies.filter(movie => {
-        return movie.year === filterBy || filterBy === 'All'
-    })
-
+    // const results = movies.filter(movie => {
+    //     return movie.year === filterBy || filterBy === 'All'
+    // })
+console.log(movies)
     return (
         <main>
             {/* <Filters filterBy={filterBy} setFilterBy={setFilterBy} listAllYears={listAllYears} /> */}
