@@ -7,7 +7,10 @@ import Signup from './components/Signup/Signup'
 //import Signin from './components/Signin/Signin'
 
 import AllReviews from './components/AllReviews/AllReviews'
+
 import NavMenu from './components/NavMenu/NavMenu'
+
+import SingleReview from "./components/SingleReview/SingleReview"
 
 
 function App() {
@@ -26,6 +29,7 @@ function App() {
           {/* <Route path="signin" element={<Signin />} /> */}
 
           <Route path="/movies/:movieId/reviews" element={<AllReviews />} />
+          <Route path="/movies/:movieId/reviews/:reviewId" element={<SingleReview />} />
 
         </Routes>
       </main>
