@@ -1,12 +1,24 @@
+main {
+    display: flex;
+    flex-direction: column;
+}
+
+.filters {
+    display: flex;
+    justify-content: space-around;
+    margin: 20px 0;
+}
+
 a {
-    text-decoration: none;
+    text-decoration: none !important;
     color: inherit; /* Optional: Ensures all links inherit the text color */
 }
 
 .card {
     border: 2px solid grey;
-        border-radius: 8px;
-        padding: 20px 0;
+    border-radius: 8px;
+    padding: 20px 0;
+    background-color: lightblue;
 }
 
 .card img {

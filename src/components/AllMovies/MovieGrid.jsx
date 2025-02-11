@@ -6,6 +6,7 @@ const Container = styled.section`
   column-gap: 20px;
   row-gap: 20px;
   text-align: center;
+  margin: 0 20px;
 `;
 
 export default function MovieGrid({ children }) {
