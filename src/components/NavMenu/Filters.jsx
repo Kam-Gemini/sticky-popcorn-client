@@ -1,17 +1,22 @@
+import { DropdownButton, Dropdown } from 'react-bootstrap'
+
 export default function ({ filterBy, setFilterBy }) {
+    const handleSelect = (eventKey) => {
+        setFilterBy(eventKey)
+      }
+
     return (
-        <section id="filters">
-            <select name="filterBy" value={filterBy} onChange={(event) => {
-                const value = event.target.value
-                setFilterBy(value)}
-            }>
-                <option value="All">All</option>
-                <option  value="1970">1970's</option>
-                <option  value="1980">1980's</option>
-                <option  value="1990">1990's</option>
-                <option  value="2000">2000's</option>
-                <option  value="2010">2010's</option>
-            </select>
-        </section>
+        <DropdownButton
+        id="dropdown-basic-button"
+        title="Select Decade"
+        onSelect={handleSelect}
+        >
+            <Dropdown.Item eventKey="All">All</Dropdown.Item>
+            <Dropdown.Item eventKey="1970">1970's</Dropdown.Item>
+            <Dropdown.Item eventKey="1980">1980's</Dropdown.Item>
+            <Dropdown.Item eventKey="1990">1990's</Dropdown.Item>
+            <Dropdown.Item eventKey="2000">2000's</Dropdown.Item>
+            <Dropdown.Item eventKey="2010">2010's</Dropdown.Item>
+        </DropdownButton>
     )
 }

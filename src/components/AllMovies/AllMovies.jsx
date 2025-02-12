@@ -4,7 +4,7 @@ import MovieGrid from './MovieGrid'
 import Filters from '../NavMenu/Filters'
 import MovieCard from './MovieCard'
 import Genre from '../NavMenu/Genre'
-import styles from './AllMovies.module.css'
+import styles from '../AllMovies/AllMovies.module.css'
 
 
 export default function AllMovies() {
@@ -51,7 +51,6 @@ export default function AllMovies() {
 
         if (selectedGenres.length > 0) {
             const selectedGenreNames = selectedGenres.map(genre => genre.name)
-            console.log(selectedGenreNames)
             results = results.filter(movie => {
                 return movie.genre.some((genre) => selectedGenreNames.includes(genre))
             })
@@ -63,20 +62,25 @@ export default function AllMovies() {
 
     const handleSearch = (e) => {
         setSearchTerm(e.target.value.toLowerCase())
-    };
+    }
 
     return (
         <main>
-            <input 
-            type="search" 
-            name="search" 
-            id="search" 
-            placeholder="Search..." 
-            onChange={handleSearch}
-            value={searchTerm}
-          />
-            <Filters filterBy={filterBy} setFilterBy={setFilterBy}/>
-            <Genre selectedGenres={selectedGenres} setSelectedGenres={setSelectedGenres}/>
+            <div className={styles.filters}>
+                <div>
+                <i class="fi fi-br-search"> </i>
+                <input 
+                    type="search" 
+                    name="search" 
+                    id="search" 
+                    placeholder="Search..." 
+                    onChange={handleSearch}
+                    value={searchTerm}
+                />
+                </div>
+                <Filters filterBy={filterBy} setFilterBy={setFilterBy}/>
+                <Genre selectedGenres={selectedGenres} setSelectedGenres={setSelectedGenres}/>
+            </div>
             <MovieGrid>
                 {displayedMovies.map(movie => (
                     <MovieCard key={movie._id} movie={movie} />
