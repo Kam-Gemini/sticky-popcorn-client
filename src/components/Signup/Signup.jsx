@@ -26,7 +26,7 @@ export default function Signup(){
   const navigate = useNavigate()
 
 
-  console.log(formData)
+  //console.log(formData)
   // Events
   const handleSubmit = async (e) => {
     e.preventDefault()
