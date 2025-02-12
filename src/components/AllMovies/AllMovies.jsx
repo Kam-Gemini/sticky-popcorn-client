@@ -4,6 +4,7 @@ import MovieGrid from './MovieGrid'
 import Filters from '../NavMenu/Filters'
 import MovieCard from './MovieCard'
 import Genre from '../NavMenu/Genre'
+import Spinner from '../Spinner/Spinner'
 import styles from '../AllMovies/AllMovies.module.css'
 
 
@@ -67,7 +68,7 @@ export default function AllMovies() {
     return (
         <main>
             <div className={styles.filters}>
-                <div>
+                <div className={styles.search}>
                 <i class="fi fi-br-search"> </i>
                 <input 
                     type="search" 
@@ -82,9 +83,12 @@ export default function AllMovies() {
                 <Genre selectedGenres={selectedGenres} setSelectedGenres={setSelectedGenres}/>
             </div>
             <MovieGrid>
-                {displayedMovies.map(movie => (
-                    <MovieCard key={movie._id} movie={movie} />
-                ))}
+                { isLoading ? <Spinner /> : displayedMovies.length > 0 ? 
+                    displayedMovies.map(movie => (
+                        <MovieCard key={movie._id} movie={movie} />
+                    ))
+                    : <h3>There are no movies found. Please adjust your filters</h3>
+                }
             </MovieGrid>
         </main>
     )

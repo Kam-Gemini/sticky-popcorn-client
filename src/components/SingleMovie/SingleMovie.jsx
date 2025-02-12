@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react'
 import { useParams, Link } from 'react-router'
-import {movieShow } from '../../services/movieService'
+import { movieShow } from '../../services/movieService'
+import MovieRating from './Rating'
+import Spinner from '../Spinner/Spinner'
 
 import styles from './SingleMovie.module.css'
 
@@ -45,17 +47,26 @@ export default function SingleMovie() {
 
     return (
         <section className={styles.movie}>
-            <h3>{movie.title}</h3>
-            <img src={movie.poster_url} alt={movie.title} />
-            <p>Year: {movie.year}</p>
-            <p>Cast: {movie.cast.join(', ')}</p>
-            <p>Director: {movie.director}</p>
-            <p>Genre: {movie.genre.join(', ')}</p>
-            <p>Runtime: {movie.runtime}</p>
-            <p>Certificate: {movie.certificate}</p>
-
-            <Link to={`/movies/${movieId}/reviews`}>Read the Reviews
-            </Link>
+            <div>
+                <img src={movie.poster_url} alt={movie.title} />
+                <MovieRating />
+            </div>
+            <div>
+                <h3>{movie.title}</h3>
+                <p>Year: {movie.year}</p>
+                <p>Cast: {movie.cast.join(', ')}</p>
+                <p>Director: {movie.director}</p>
+                <p>Genre: {movie.genre.join(', ')}</p>
+                <p>Runtime: {movie.runtime}</p>
+                <p>Certificate: {movie.certificate}</p>
+                <div className={styles.icons}>
+                    <img src="https://res.cloudinary.com/dvp3fdavw/image/upload/v1739356535/heart_1_yybbex.png" />
+                    <img src="https://res.cloudinary.com/dvp3fdavw/image/upload/v1739356535/tv_rkyzjg.png" />
+                </div>
+                
+                <Link to={`/movies/${movieId}/reviews`}>Read the Reviews
+                </Link>
+            </div>
         </section>
     )
 }

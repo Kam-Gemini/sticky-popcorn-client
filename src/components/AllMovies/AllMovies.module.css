@@ -9,6 +9,10 @@ main {
     margin: 20px 0;
 }
 
+.search {
+    line-height: 35px;
+}
+
 a {
     text-decoration: none !important;
     color: inherit; /* Optional: Ensures all links inherit the text color */

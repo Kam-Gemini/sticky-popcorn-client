@@ -31,7 +31,7 @@ export default function NavMenu() {
             <MainHeading>
                 <TitleImage>
                     <Heading>Sticky Popcorn</Heading>
-                    <Image src="https://res.cloudinary.com/dvp3fdavw/image/upload/v1739297863/pngimg.com_-_popcorn_PNG21_rhjjqy.png" />
+                    <Image src="https://res.cloudinary.com/dvp3fdavw/image/upload/v1739356536/pngimg.com_-_popcorn_PNG21_lo8zgy.png" />
                 </TitleImage>
                 <Button variant="primary" onClick={() => navigate('/signin')}>Sign in</Button>
             </MainHeading>
