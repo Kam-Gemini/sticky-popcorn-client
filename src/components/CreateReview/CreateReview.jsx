@@ -18,23 +18,46 @@ export default function CreateReview() {
     const [errors, setErrors] = useState({})
 
 
-    // useEffect(() => {
-    //     if(!user) {
-    //         navigate("/signin")
-    //     }
-    // }, [user, navigate])
+
+    useEffect(() => {
+        if (!user) {
+            sessionStorage.setItem("redirectPath", `/movies/${movieId}/create-review`)
+            navigate("/signin")
+        } else {
+            const redirect = sessionStorage.getItem("redirectPath")
+            if (redirect) {
+                sessionStorage.removeItem("redirectPath")
+                navigate(redirect)
+            }
+        }
+    }, [user, navigate, movieId])
 
 
     const handleSubmit = async (event) => {
         event.preventDefault()
         try {
-            const data = await reviewPost(movieId, reviewData)
-            setReview(data)
-            navigate(`movies/${movieId}/reviews/${reviewPost._id}`)
+            const response = await reviewPost(movieId, reviewData)
+            
+            if (!response || !response._id) {
+                throw new Error("Invalid response from the server");
+            }
+            if (!movieId) {
+                throw new Error("Incorrect movie id")
+            }
+            setReviewData(response)
+            navigate(`/movies/${movieId}/reviews/`)
+
         } catch (error) {
-            setErrors(error.response.data.errors)
+
+            if (error.response && error.response.data && error.response.data.errors) {
+                setErrors(error.response.data.errors)
+            } else {
+                setErrors({ general: "Something went wrong. Please try again." })
+            }
         }
     }
+
+
 
     const handleChange = async (event) => {
         setReviewData({ ...reviewData, [event.target.name]: event.target.value })

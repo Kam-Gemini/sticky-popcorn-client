@@ -27,10 +27,10 @@ export const reviewShow = async (movieId, reviewId) => {
 export const reviewPost = async (movieId, reviewData) => {
     try {
         const response = await axios.post(`${BASE_URL}/movies/${movieId}/reviews`, reviewData, {
-        // headers: {
-        //     Authorization: `Bearer ${getToken()}`
-        // }
-    })
+            headers: {
+                Authorization: `Bearer ${getToken()}`
+            }
+        })
         return response.data
     } catch (error) {
         console.log(error)
