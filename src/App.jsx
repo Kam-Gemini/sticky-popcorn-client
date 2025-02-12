@@ -11,6 +11,7 @@ import AllReviews from './components/AllReviews/AllReviews'
 import NavMenu from './components/NavMenu/NavMenu'
 
 import SingleReview from "./components/SingleReview/SingleReview"
+import CreateReview from './components/CreateReview/CreateReview'
 
 
 function App() {
@@ -30,6 +31,7 @@ function App() {
 
           <Route path="/movies/:movieId/reviews" element={<AllReviews />} />
           <Route path="/movies/:movieId/reviews/:reviewId" element={<SingleReview />} />
+          <Route path="/movies/:movieId/create-review" element={<CreateReview />} />
 
         </Routes>
       </main>

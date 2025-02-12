@@ -1,4 +1,5 @@
 import axios from "axios"
+import { getToken } from "../utils/auth.js"
 
 const BASE_URL = import.meta.env.VITE_API_URL
 
@@ -23,16 +24,16 @@ export const reviewShow = async (movieId, reviewId) => {
     }
 }
 
-// export const createReview = async (movieId, reviewData) => {
-//     try {
-//         const response = await axios.post(BASE_URL + /movies/`${movieId}/reviews/${reviewId}`, reviewData, {
-//         headers: {
-//             Authorization: `Bearer ${getToken()}`
-//         }
-//     })
-//         return response.data
-//     } catch (error) {
-//         console.log(error)
-//         throw error
-//     }
-// }
+export const reviewPost = async (movieId, reviewData) => {
+    try {
+        const response = await axios.post(`${BASE_URL}/movies/${movieId}/reviews`, reviewData, {
+            headers: {
+                Authorization: `Bearer ${getToken()}`
+            }
+        })
+        return response.data
+    } catch (error) {
+        console.log(error)
+        throw error
+    }
+}
