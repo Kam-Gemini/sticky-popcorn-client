@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router'
 import { signin } from '../../services/userService'
 import { setToken } from '../../utils/auth'
 import { getUserFromToken } from '../../utils/auth'
-
+import { Button } from 'react-bootstrap'
 import { UserContext } from '../../contexts/UserContext'
 
 // Styles
@@ -90,6 +90,9 @@ export default function Signin(){
             } type="submit">Submit</button>
 
       </form>
+
+
+      <Button variant="primary" onClick={() => navigate('/signup')}>Don't have an accoutn yet? Sign up here!</Button>
     </section>
   )
 }
