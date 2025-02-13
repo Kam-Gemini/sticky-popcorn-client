@@ -5,7 +5,7 @@ import { setToken } from '../../utils/auth'
 import { getUserFromToken } from '../../utils/auth'
 import { Button } from 'react-bootstrap'
 import { UserContext } from '../../contexts/UserContext'
-
+import { useLocation } from "react-router-dom";
 // Styles
 import styles from './Signin.module.css'
 
@@ -25,6 +25,8 @@ export default function Signin(){
   // Location variables
   const navigate = useNavigate()
 
+  const location = useLocation();
+  const fromPage = location.state?.from || "unknown"
 
   //console.log(formData)
   // Events
@@ -36,9 +38,11 @@ export default function Signin(){
       // Set the global user context/state
       setUser(getUserFromToken())
       // Navigate to posts page
-      navigate('/')
+     // navigate(fromPage !== "unknown" ? fromPage : "/")
+     navigate(-2)
     } catch (error) {
-      setErrors(error.response.data.errors)
+    //   setErrors(error.response.data.errors)
+      setErrors(error.message)
     }
   }
 
@@ -50,15 +54,19 @@ export default function Signin(){
 
   return (
     <section className={styles.container}>
+        <div>
+       {fromPage === '/' && <p>Welcome! You came from the home page.</p>}
+       </div>
       <h1>Sign in</h1>
       <p>Log in to your account!</p>
+      
       <form onSubmit={handleSubmit}>
 
      
 
         {/* Username */}
         <div className="form-control">
-          <label htmlFor="identifer">Username or email</label>
+          <label htmlFor="identifier">Username or email</label>
           <input 
             type="text"
             name="identifier" 
@@ -92,7 +100,7 @@ export default function Signin(){
       </form>
 
 
-      <Button variant="primary" onClick={() => navigate('/signup')}>Don't have an accoutn yet? Sign up here!</Button>
+      <Button variant="primary" onClick={() => navigate('/signup')}>Don't have an account yet? Sign up here!</Button>
     </section>
   )
 }
