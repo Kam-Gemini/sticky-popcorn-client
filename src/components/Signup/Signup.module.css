@@ -1,13 +1,26 @@
 .container {
-    padding: 1rem;
+    padding-left: 25rem;
+    padding-right: 25rem;
     color: var(--text-secondary);
     font-size: .9rem;
+    display: flex;
+    flex-direction:column;
+    justify-content: center;
+    margin: 0px, 100px, 0px, 100px;
   }
   
   .container h1 {
     color: var(--text-primary);
     font-size: 1.75rem;
     margin-bottom: 1rem;
+    margin-left: 5rem;
+    margin-right: 5rem;
+    justify-items: center;
+  text-align: center;
+  }
+
+  .container p {
+    text-align: center;
   }
   
   .container div {
@@ -61,3 +74,27 @@
     background-color: var(--brand-hover);
     cursor: pointer;
   }
+
+  .form-control {
+    margin: 0px, 100px, 0px, 100px;
+    background-color: red;
+  }
+
+  .image {
+    background-image: url(./giphy.gif);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    /* height:100px;
+    width: 100px; */
+    /* background-color:red; */
+    /* padding: 20px; */
+    padding: 20px;
+    height: 10rem;
+    /* padding-left: 25rem;
+    padding-right: 25rem; */
+    margin: 0px, 100px, 0px, 100px;
+  }
+  
+
+  /* background-image: url(../images/giphy.webp); */
