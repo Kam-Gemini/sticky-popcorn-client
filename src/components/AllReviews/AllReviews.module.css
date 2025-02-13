@@ -1,0 +1,34 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem; 
+    border-color: inherit;
+}
+
+.header h2 {
+    font-family: "Bebas Neue", sans-serif;
+    color:var(--text-primary);
+}
+
+.reviewCard {
+    padding: 1rem;
+    border: 1px solid var(--border);
+
+}
+
+.reviewCard p {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 20px;
+    color:var(--text-secondary);
+}
+
+.reviewCard span {
+    font-family: "Cormorant Garamond", sans-serif;
+    font-weight: bold;
+    color:var(--text-primary);
+}
+
+.date p {
+    font-family: "Bebas Neue", sans-serif;
+}

@@ -1,3 +1,5 @@
+import './App.css'
+
 import { Routes, Route, NavLink } from 'react-router'
 
 import AllMovies from './components/AllMovies/AllMovies'
