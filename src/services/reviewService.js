@@ -60,7 +60,7 @@ export const reviewDelete = async (movieId, reviewId) => {
                 Authorization: `Bearer ${getToken()}`
             }
         })
-        console.log(response)
+        return response.data
     } catch (error) {
         console.log(error)
         throw error
