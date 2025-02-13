@@ -14,3 +14,12 @@
     gap: 20px;
     margin: 20px 0;
 }
+
+.button {
+    all: unset;
+    cursor: pointer;
+}
+  
+.button img {
+    display: block;
+}

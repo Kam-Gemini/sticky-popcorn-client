@@ -3,7 +3,7 @@ import {useContext, useState, useEffect} from 'react'
 import { Button } from 'react-bootstrap'
 import { useNavigate } from 'react-router'
 import { UserContext } from '../../contexts/UserContext'
-import { removeToken } from '../../utils/auth'
+import { getToken, removeToken } from '../../utils/auth'
 // import { NavLink } from 'react-router'
 
 const MainHeading = styled.div`
@@ -27,24 +27,23 @@ const Tagline = styled.div`
     margin: 0 20px;
 `
 
-
 export default function NavMenu() {
     const navigate = useNavigate()
 
     const { user, setUser } = useContext(UserContext)
-    // const [isSigningOut, setIsSigningOut] = useState(false);
-
-    // const signOut = () => {
-    //     removeToken ()
-    //     setUser(null)
-    //     navigate('/')
-    // }
 
     const signOut = () => {
         removeToken()
         setUser(null)
         setTimeout(() => navigate('/'), 100)
     }
+    getToken()
+    useEffect(() => {
+        if (user && user._id) {
+            // Perform any actions that depend on user._id here
+            console.log(`User ID is available: ${user._id}`);
+        }
+    }, [user])
 
 
 
@@ -55,17 +54,18 @@ export default function NavMenu() {
                     <Heading>Sticky Popcorn</Heading>
                     <Image src="https://res.cloudinary.com/dvp3fdavw/image/upload/v1739356536/pngimg.com_-_popcorn_PNG21_lo8zgy.png" />
                 </TitleImage>
-                {user
+                {user && user._id
                 ? (
                     <>
-                
-                    <Button variant="primary" onClick={signOut}>Sign out</Button>
-                  
-                  </> 
+                        <Button variant="primary" onClick={() => navigate(`/`)}>Home</Button>
+                        <Button variant="primary" onClick={signOut}>Sign out</Button>
+                        <Button variant="primary" onClick={() => navigate(`/movies/favourites`)}>Favourites</Button>
+                        <Button variant="primary" onClick={() => navigate(`/movies/watchlist`)}>Watchlist</Button>
+                    </> 
                 )
                 : (
                     <>
-                    <Button variant="primary" onClick={() => navigate('/signin')}>Sign in</Button>
+                        <Button variant="primary" onClick={() => navigate('/signin')}>Sign in</Button>
                     </>
                 )
             }
