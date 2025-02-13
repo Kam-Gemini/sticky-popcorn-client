@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import {useContext, useEffect} from 'react'
+import {useContext, useState, useEffect} from 'react'
 import { Button } from 'react-bootstrap'
 import { useNavigate } from 'react-router'
 import { UserContext } from '../../contexts/UserContext'
@@ -31,11 +31,11 @@ export default function NavMenu() {
     const navigate = useNavigate()
 
     const { user, setUser } = useContext(UserContext)
-    console.log(user)
 
     const signOut = () => {
-        removeToken ()
+        removeToken()
         setUser(null)
+        setTimeout(() => navigate('/'), 100)
     }
     getToken()
     useEffect(() => {
@@ -44,6 +44,8 @@ export default function NavMenu() {
             console.log(`User ID is available: ${user._id}`);
         }
     }, [user])
+
+
 
     return (
         <>

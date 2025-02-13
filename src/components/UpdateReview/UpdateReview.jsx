@@ -1,57 +1,55 @@
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useState, useContext } from "react"
 import { UserContext } from "../../contexts/UserContext.jsx"
 import { useNavigate, useParams, Link } from "react-router"
-import { reviewPost } from "../../services/reviewService.js"
-
-import styles from "./CreateReview.module.css"
+import { reviewUpdate, reviewShow } from "../../services/reviewService.js"
 
 
-export default function CreateReview() {
+export default function UpdateReview() {
 
-    const { movieId } = useParams()
+    const { movieId, reviewId } = useParams()
     const { user } = useContext(UserContext)
     
     const [reviewData, setReviewData] = useState({
         content: ""
     })
+    const [error, setError] = useState({})
     const navigate = useNavigate()
-    const [errors, setErrors] = useState({})
-
-
 
     useEffect(() => {
         if (!user) {
-            sessionStorage.setItem("redirectPath", `/movies/${movieId}/create-review`)
             navigate("/signin")
-        } else {
-            const redirect = sessionStorage.getItem("redirectPath")
-            if (redirect) {
-                sessionStorage.removeItem("redirectPath")
-                navigate(redirect)
+            return
+        } 
+
+        reviewShow(movieId, reviewId)
+        .then(data => {
+            if(data.author._id !== user._id) {
+                navigate(`/movies/${movieId}/reviews/`)
             }
-        }
-    }, [user, navigate, movieId])
+                setReviewData(data)
+        })
+    }, [movieId, reviewId, user, navigate])
 
 
     const handleSubmit = async (event) => {
         event.preventDefault()
         try {
-            const createReview = await reviewPost(movieId, reviewData)
-            navigate(`/movies/${movieId}/reviews/`)
-            setReviewData(response)
+            const updateReview = await reviewUpdate(movieId, reviewId, reviewData)
+            navigate(`/movies/${movieId}/reviews`)
+            setReviewData(updateReview)
         } catch (error) {
+            setError(error.response)
         }
     }
             
-
-
+        
     const handleChange = async (event) => {
         setReviewData({ ...reviewData, [event.target.name]: event.target.value })
     }
 
     return (
         <section>
-            <h2>Add your review!</h2>
+            <h2>Update your review!</h2>
             <form onSubmit={handleSubmit}>
                 <div className="form-control">
                     <label hidden htmlFor="content">Content</label>
@@ -65,9 +63,9 @@ export default function CreateReview() {
                 </div>
 
                 <div className="button-group">
-                    <Link to={`/movies/${movieId}`}>Cancel</Link>
+                    <Link to={`/movies/${movieId}/reviews/${reviewId}`}>Cancel</Link>
                     <button type="submit" disabled={reviewData.content === ""}>
-                        Post Review
+                        Update Review
                     </button>
                 </div>
             </form>

@@ -6,6 +6,9 @@ import { getUserFromToken } from '../../utils/auth'
 
 import { UserContext } from '../../contexts/UserContext'
 
+import { NavHistoryContext } from '../../contexts/NavHistoryContext'
+
+
 // Styles
 import styles from './Signup.module.css'
 
@@ -23,8 +26,21 @@ export default function Signup(){
   const [errors, setErrors] = useState({})
 
   // Location variables
-  const navigate = useNavigate()
 
+    const { history } = useContext(NavHistoryContext);
+    const navigate = useNavigate();
+
+    const handleNavigate = () => {
+      const targetIndex = history.length -3
+      if (history[targetIndex] === '/'){
+        console.log('IF')
+        navigate(-2)
+      }
+      else{
+        console.log('ELSE')
+        navigate(-3)
+      }
+    }
 
   //console.log(formData)
   // Events
@@ -36,7 +52,9 @@ export default function Signup(){
       // Set the global user context/state
       setUser(getUserFromToken())
       // Navigate to posts page
-      navigate('/')
+      console.log(`HISTORY ${history}`)
+      handleNavigate()
+      
     } catch (error) {
       setErrors(error.response.data.errors)
     }
@@ -50,6 +68,7 @@ export default function Signup(){
 
   return (
     <section className={styles.container}>
+      
       <h1>Sign up</h1>
       <p>Create an account on Sticky Popcorn!</p>
       <form onSubmit={handleSubmit}>
@@ -99,6 +118,9 @@ export default function Signup(){
         </div>
 
      
+     
+       
+
         <button disabled={formData.password === '' 
             //</form>|| formData.password !== formData.confirmPassword
             } type="submit">Submit</button>
