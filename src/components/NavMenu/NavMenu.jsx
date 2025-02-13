@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import {useContext} from 'react'
+import {useContext, useState, useEffect} from 'react'
 import { Button } from 'react-bootstrap'
 import { useNavigate } from 'react-router'
 import { UserContext } from '../../contexts/UserContext'
@@ -32,11 +32,21 @@ export default function NavMenu() {
     const navigate = useNavigate()
 
     const { user, setUser } = useContext(UserContext)
+    // const [isSigningOut, setIsSigningOut] = useState(false);
+
+    // const signOut = () => {
+    //     removeToken ()
+    //     setUser(null)
+    //     navigate('/')
+    // }
 
     const signOut = () => {
-        removeToken ()
+        removeToken()
         setUser(null)
+        setTimeout(() => navigate('/'), 100)
     }
+
+
 
     return (
         <>
