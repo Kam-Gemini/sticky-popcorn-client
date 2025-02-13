@@ -1,6 +1,7 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useContext } from 'react'
 import { useParams, Link } from 'react-router'
-import { movieShow } from '../../services/movieService'
+import { UserContext } from '../../contexts/UserContext'
+import { addUserFavourite, addUserWatchlist, movieShow } from '../../services/movieService'
 import MovieRating from './Rating'
 import Spinner from '../Spinner/Spinner'
 
@@ -12,6 +13,7 @@ export default function SingleMovie() {
     const [movie, setMovie] = useState({})
     const [isLoading, setIsLoading] = useState(true)
     const [error, setError] = useState('')
+    const { user, setUser } = useContext(UserContext)
 
     // Location variables
     const { movieId } = useParams()
@@ -44,7 +46,51 @@ export default function SingleMovie() {
         return <p>{error}</p>;
       }
 
+    const handleAddFavourite = async (movieId) => {
+    try {
+            const response = await addUserFavourite(movieId)
+            console.log(response)
+            
+            if (!response || !response._id) {
+                throw new Error("Invalid response from the server");
+            }
+            if (!movieId) {
+                throw new Error("Incorrect movie id")
+            }
 
+        } catch (error) {
+            console.log(error)
+            if (error.response && error.response.data && error.response.data.errors) {
+                setError(error.response.data.errors)
+            } else {
+                setError({ general: "Something went wrong. Please try again." })
+            }
+        }
+    }
+
+    const handleAddWatchlist = async (movieId) => {
+        try {
+                const response = await addUserWatchlist(movieId)
+                console.log(response)
+                
+                if (!response || !response._id) {
+                    throw new Error("Invalid response from the server");
+                }
+                if (!movieId) {
+                    throw new Error("Incorrect movie id")
+                }
+    
+            } catch (error) {
+                console.log(error)
+                if (error.response && error.response.data && error.response.data.errors) {
+                    setError(error.response.data.errors)
+                } else {
+                    setError({ general: "Something went wrong. Please try again." })
+                }
+            }
+        }
+
+    console.log(movie)
     return (
         <section className={styles.movie}>
             <div>
@@ -59,11 +105,12 @@ export default function SingleMovie() {
                 <p>Genre: {movie.genre.join(', ')}</p>
                 <p>Runtime: {movie.runtime}</p>
                 <p>Certificate: {movie.certificate}</p>
-                <div className={styles.icons}>
-                    <img src="https://res.cloudinary.com/dvp3fdavw/image/upload/v1739356535/heart_1_yybbex.png" />
-                    <img src="https://res.cloudinary.com/dvp3fdavw/image/upload/v1739356535/tv_rkyzjg.png" />
-                </div>
-                
+                { user ? 
+                    (<div className={styles.icons}>
+                        <button className={styles.button} id="add-favourite" onClick={() => {handleAddFavourite(movieId)}}><img src="https://res.cloudinary.com/dvp3fdavw/image/upload/v1739356535/heart_1_yybbex.png" /></button>
+                        <button className={styles.button} id="add-watchlist" onClick={() => {handleAddWatchlist(movieId)}}><img src="https://res.cloudinary.com/dvp3fdavw/image/upload/v1739442031/television_djct6l.png" /></button>
+                    </div>) : <></>
+                }
                 <Link to={`/movies/${movieId}/reviews`}>Read the Reviews
                 </Link>
             </div>

@@ -1,6 +1,8 @@
 import { Routes, Route, NavLink } from 'react-router'
 
 import AllMovies from './components/AllMovies/AllMovies'
+import FavouriteMovies from './components/AllMovies/FavouriteMovies'
+import Watchlist from './components/AllMovies/Watchlist'
 import SingleMovie from './components/SingleMovie/SingleMovie'
 
 import Signup from './components/Signup/Signup'
@@ -24,6 +26,9 @@ function App() {
       <main>
         <Routes>
           <Route path="/" element={<AllMovies />} />
+          <Route path="/movies/favourites" element={<FavouriteMovies />} />
+          <Route path="/movies/watchlist" element={<Watchlist />} />
+
           <Route path="/movies/:movieId" element={<SingleMovie />} />
 
           <Route path="/signup" element={<Signup />} />
