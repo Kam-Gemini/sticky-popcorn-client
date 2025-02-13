@@ -54,6 +54,9 @@ export default function Signin(){
 
   return (
     <section className={styles.container}>
+           <section className={styles.image}>
+               
+              </section>
         <div>
        {fromPage === '/' && <p>Welcome! You came from the home page.</p>}
        </div>

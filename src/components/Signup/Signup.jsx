@@ -7,10 +7,12 @@ import { getUserFromToken } from '../../utils/auth'
 import { UserContext } from '../../contexts/UserContext'
 
 import { NavHistoryContext } from '../../contexts/NavHistoryContext'
+import styled from 'styled-components'
 
 
 // Styles
 import styles from './Signup.module.css'
+//import styled from 'styled-components'
 
 export default function Signup(){
   // Context
@@ -66,9 +68,15 @@ export default function Signup(){
     setFormData({ ...formData, [e.target.name]: e.target.value })
   }
 
+// const SignupForm = styled.section`
+//  display: flex;
+// `
+
   return (
     <section className={styles.container}>
-      
+      <section className={styles.image}>
+       
+      </section>
       <h1>Sign up</h1>
       <p>Create an account on Sticky Popcorn!</p>
       <form onSubmit={handleSubmit}>
