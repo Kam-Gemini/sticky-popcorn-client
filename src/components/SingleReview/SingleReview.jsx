@@ -15,6 +15,7 @@ export default function SingleReview() {
 
     useEffect(() => {
         if (!movieId || !reviewId) return
+
         setIsLoading(true)
         reviewShow(movieId, reviewId)
             .then(data => setReview(data))
@@ -26,19 +27,18 @@ export default function SingleReview() {
 
 
     const handleDelete = async () => {
-        console.log("before deletion", review)
+        
         const confirmDelete = window.confirm("Are you sure you want to delete this review?")
-        if (confirmDelete)
+        if (confirmDelete) {
             try {
                 await reviewDelete(movieId, reviewId)
-                console.log("review deleted succesfully")
-                setReview(null)
-                console.log("after deletion", review)
                 navigate(`/movies/${movieId}/reviews`)
+
             } catch (error) {
                 console.log("failed to delete review", error)
 
             }
+        }
         }
 
     return (
