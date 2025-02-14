@@ -20,7 +20,6 @@ export default function FavouriteMovies() {
     const [isLoading, setIsLoading] = useState(true)
     const { user, setUser } = useContext(UserContext)
 
-
     // On component mount (first render only)
     useEffect(() => {
         userFavouritesShow()

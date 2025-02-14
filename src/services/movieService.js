@@ -26,10 +26,11 @@ export const movieShow = async (movieId) => {
 export const userFavouritesShow = async () => {
   try {
     const res = await axios.get(BASE_URL + `/favourites`, {
-                headers: {
-                    Authorization: `Bearer ${getToken()}`
-                }
-            })
+      headers: {
+          Authorization: `Bearer ${getToken()}`
+      }
+    })
+    console.log(res.data)    
     return res.data
   } catch (error) {
     console.log(error)
