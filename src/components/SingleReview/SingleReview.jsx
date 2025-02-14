@@ -72,7 +72,7 @@ export default function SingleReview() {
                             <button onClick={handleDelete} className={styles.button}>
                                 Delete
                             </button>
-                            <Link to={`/movies/${movieId}/reviews/${reviewId}`} className={styles.button}>
+                            <Link to={`/movies/${movieId}/reviews`} className={styles.button}>
                                 Cancel
                             </Link>
                         </>
