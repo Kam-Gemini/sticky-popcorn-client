@@ -94,24 +94,32 @@ export default function SingleMovie() {
     return (
         <section className={styles.movie}>
             <div>
-                <img src={movie.poster_url} alt={movie.title} />
+                <img src={movie.poster_url} alt={movie.title} className={styles.movieImage} />
                 <MovieRating />
             </div>
             <div>
-                <h3>{movie.title}</h3>
-                <p>Year: {movie.year}</p>
-                <p>Cast: {movie.cast.join(', ')}</p>
-                <p>Director: {movie.director}</p>
-                <p>Genre: {movie.genre.join(', ')}</p>
-                <p>Runtime: {movie.runtime}</p>
-                <p>Certificate: {movie.certificate}</p>
+                <h3 className={styles.movieTitle}>{movie.title}</h3>
+                <p className={styles.movieInfo}>
+                    Year: {movie.year}</p>
+                <p className={styles.movieInfo}>
+                    Cast: {movie.cast.join(', ')}</p>
+                <p className={styles.movieInfo}>
+                    Director: {movie.director}</p>
+                <p className={styles.movieInfo}>
+                    Genre: {movie.genre.join(', ')}</p>
+                <p className={styles.movieInfo}>
+                    Runtime: {movie.runtime}</p>
+                <p className={styles.movieInfo}>
+                    Certificate: {movie.certificate}</p>
+                <Link to={`/movies/${movieId}/reviews`} className={styles.button}>Read the Reviews
+                </Link>
                 { user ? 
                     (<div className={styles.icons}>
                         <button className={styles.button} id="add-favourite" onClick={() => {handleAddFavourite(movieId)}}><img src="https://res.cloudinary.com/dvp3fdavw/image/upload/v1739356535/heart_1_yybbex.png" /></button>
                         <button className={styles.button} id="add-watchlist" onClick={() => {handleAddWatchlist(movieId)}}><img src="https://res.cloudinary.com/dvp3fdavw/image/upload/v1739442031/television_djct6l.png" /></button>
                     </div>) : <></>
                 }
-                <Link to={`/movies/${movieId}/reviews`}>Read the Reviews
+                <Link to={`/`} className={styles.button}>Back to all movies
                 </Link>
             </div>
         </section>

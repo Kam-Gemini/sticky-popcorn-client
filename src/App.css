@@ -7,7 +7,7 @@
     --background-secondary: #3F525C;
     --background-tertiary: #556D79;
     --border: #7A9BA6;
-    --brand: #F9A826;
+    --brand: #cda96f;
     --brand-hover: #D88A1A;
     --brand-disabled: #B77A17;
     --error: #E74C3C;
@@ -20,6 +20,11 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
+
+body {
+    background-color: var(--background-tertiary);
+}
+
 
 main {
     margin: 0;
@@ -43,3 +48,6 @@ h1, h2, h3, h4, h5, h6 {
     color:var(--text-primary)
 }
 
+html {
+    background-color: var(--background-tertiary);
+}

@@ -3,6 +3,7 @@ import { UserContext } from "../../contexts/UserContext.jsx"
 import { useNavigate, useParams, Link } from "react-router"
 import { reviewUpdate, reviewShow } from "../../services/reviewService.js"
 
+import styles from "./UpdateReview.module.css"
 
 export default function UpdateReview() {
 
@@ -48,13 +49,16 @@ export default function UpdateReview() {
     }
 
     return (
-        <section>
-            <h2>Update your review!</h2>
-            <form onSubmit={handleSubmit}>
-                <div className="form-control">
+        <section className={styles.updateReviewContainer}>
+            <div className={styles.header}>
+            <h1>Update your review!</h1>
+            </div>
+
+            <form onSubmit={handleSubmit} className={styles.reviewForm}>
+                <div className={styles.formControl}>
                     <label hidden htmlFor="content">Content</label>
-                    <textarea
-                    name="content" rows={4} cols={20}
+                    <textarea className={styles.reviewTextArea}
+                    name="content"
                     id="content"
                     placeholder="What's your review?"
                     value={reviewData.content}
@@ -62,15 +66,15 @@ export default function UpdateReview() {
                     </textarea>
                 </div>
 
-                <div className="button-group">
-                    <Link to={`/movies/${movieId}/reviews/${reviewId}`}>Cancel</Link>
-                    <button type="submit" disabled={reviewData.content === ""}>
+                <div>
+                    <Link to={`/movies/${movieId}/reviews/`} className={styles.button}>
+                        Cancel
+                    </Link>
+                    <button type="submit" disabled={reviewData.content === ""} className={styles.button}>
                         Update Review
                     </button>
                 </div>
             </form>
         </section>
-
     )
-
 }
