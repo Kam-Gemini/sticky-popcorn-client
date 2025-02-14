@@ -39,15 +39,6 @@ export default function NavMenu() {
         setUser(null)
         setTimeout(() => navigate('/'), 100)
     }
-    getToken()
-    useEffect(() => {
-        if (user && user._id) {
-            // Perform any actions that depend on user._id here
-            console.log(`User ID is available: ${user._id}`);
-        }
-    }, [user])
-
-
 
     return (
         <>

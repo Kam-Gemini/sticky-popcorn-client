@@ -16,9 +16,12 @@ export default function SingleMovie() {
     const [error, setError] = useState('')
     const [randomReview, setRandomReview] = useState(null)
     const { user, setUser } = useContext(UserContext)
+    const [isFavourite, setIsFavourite] = useState(false)
+    const [isWatchlist, setIsWatchlist] = useState(false)
 
     // Location variables
     const { movieId } = useParams()
+    const { user } = useContext(UserContext)
 
     // On initial render
     useEffect(() => {
@@ -26,9 +29,11 @@ export default function SingleMovie() {
             try {
                 const data = await movieShow(movieId)
                 setMovie(data)
+                setIsFavourite(data?.favouritedBy?.some(fb => fb._id === user._id))
+                setIsWatchlist (data?.watchlistBy?.some(wb => wb._id === user._id))
             } catch (error) {
                 if (error.status === 400) {
-                    setError('Post not found.')
+                    setError('Movie not found.')
                 } else {
                     setError(error.message)
                 }
@@ -38,6 +43,7 @@ export default function SingleMovie() {
             }
         }
         getMovie()
+        
     }, [movieId]) // This empty dependency array ensures this effect only executes on initial render
 
 
@@ -67,7 +73,12 @@ export default function SingleMovie() {
     const handleAddFavourite = async (movieId) => {
         try {
             const response = await addUserFavourite(movieId)
+
             console.log(response)
+
+            setMovie(response)
+            setIsFavourite(!isFavourite)
+
 
             if (!response || !response._id) {
                 throw new Error("Invalid response from the server");
@@ -77,7 +88,6 @@ export default function SingleMovie() {
             }
 
         } catch (error) {
-            console.log(error)
             if (error.response && error.response.data && error.response.data.errors) {
                 setError(error.response.data.errors)
             } else {
@@ -88,6 +98,7 @@ export default function SingleMovie() {
 
     const handleAddWatchlist = async (movieId) => {
         try {
+
             const response = await addUserWatchlist(movieId)
             console.log(response)
 
@@ -98,17 +109,16 @@ export default function SingleMovie() {
                 throw new Error("Incorrect movie id")
             }
 
-        } catch (error) {
-            console.log(error)
-            if (error.response && error.response.data && error.response.data.errors) {
-                setError(error.response.data.errors)
-            } else {
-                setError({ general: "Something went wrong. Please try again." })
+            } catch (error) {
+                if (error.response && error.response.data && error.response.data.errors) {
+                    setError(error.response.data.errors)
+                } else {
+                    setError({ general: "Something went wrong. Please try again." })
+                }
             }
         }
     }
 
-    console.log(movie)
     return (
         <section className={styles.movie}>
             <div>
@@ -132,8 +142,10 @@ export default function SingleMovie() {
 
                 {user ?
                     (<div className={styles.icons}>
-                        <button className={styles.button} id="add-favourite" onClick={() => { handleAddFavourite(movieId) }}><img src="https://res.cloudinary.com/dvp3fdavw/image/upload/v1739356535/heart_1_yybbex.png" /></button>
-                        <button className={styles.button} id="add-watchlist" onClick={() => { handleAddWatchlist(movieId) }}><img src="https://res.cloudinary.com/dvp3fdavw/image/upload/v1739442031/television_djct6l.png" /></button>
+
+                        <button className={styles.button} id="add-favourite" onClick={() => {handleAddFavourite(movieId)}}>{ isFavourite ? <img src="https://res.cloudinary.com/dvp3fdavw/image/upload/v1739356535/heart_1_yybbex.png" /> : <img src="https://res.cloudinary.com/dvp3fdavw/image/upload/v1739356535/heart_r6m3po.png" />}</button>
+                        <button className={styles.button} id="add-watchlist" onClick={() => {handleAddWatchlist(movieId)}}>{ isWatchlist ? <img src="https://res.cloudinary.com/dvp3fdavw/image/upload/v1739442031/television_djct6l.png" /> : <img src="https://res.cloudinary.com/dvp3fdavw/image/upload/v1739356535/tv_rkyzjg.png" />}</button>
+
                     </div>) : <></>
                 }
 
