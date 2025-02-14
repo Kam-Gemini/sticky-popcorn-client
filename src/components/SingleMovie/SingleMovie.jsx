@@ -21,7 +21,6 @@ export default function SingleMovie() {
 
     // Location variables
     const { movieId } = useParams()
-    const { user } = useContext(UserContext)
 
     // On initial render
     useEffect(() => {
@@ -117,7 +116,6 @@ export default function SingleMovie() {
                 }
             }
         }
-    }
 
     return (
         <section className={styles.movie}>

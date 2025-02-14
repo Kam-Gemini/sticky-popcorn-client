@@ -6,7 +6,7 @@ import Filters from '../NavMenu/Filters'
 import MovieCard from './MovieCard'
 import Genre from '../NavMenu/Genre'
 import Spinner from '../Spinner/Spinner'
-import styles from '../AllMovies/AllMovies.module.css'
+import styles from './AllMovies.module.css'
 
 
 export default function FavouriteMovies() {

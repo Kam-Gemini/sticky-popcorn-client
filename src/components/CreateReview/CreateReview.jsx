@@ -38,7 +38,7 @@ export default function CreateReview() {
         try {
             const createReview = await reviewPost(movieId, reviewData)
             navigate(`/movies/${movieId}/reviews/`)
-            setReviewData(response)
+            setReviewData(createReview)
         } catch (error) {
         }
     }
