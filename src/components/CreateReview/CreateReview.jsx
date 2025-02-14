@@ -43,20 +43,21 @@ export default function CreateReview() {
         }
     }
             
-
-
     const handleChange = async (event) => {
         setReviewData({ ...reviewData, [event.target.name]: event.target.value })
     }
 
     return (
-        <section>
-            <h2>Add your review!</h2>
-            <form onSubmit={handleSubmit}>
-                <div className="form-control">
+        <section className={styles.createReviewContainer}>
+            <div className={styles.header}>
+            <h1>Add your review!</h1>
+            </div>
+            
+            <form onSubmit={handleSubmit} className={styles.reviewForm}>
+                <div className={styles.formControl}>
                     <label hidden htmlFor="content">Content</label>
-                    <textarea
-                    name="content" rows={4} cols={20}
+                    <textarea className={styles.reviewTextArea}
+                    name="content"
                     id="content"
                     placeholder="What's your review?"
                     value={reviewData.content}
@@ -64,9 +65,11 @@ export default function CreateReview() {
                     </textarea>
                 </div>
 
-                <div className="button-group">
-                    <Link to={`/movies/${movieId}`}>Cancel</Link>
-                    <button type="submit" disabled={reviewData.content === ""}>
+                <div>
+                    <Link to={`/movies/${movieId}`} className={styles.button}>
+                        Cancel
+                    </Link>
+                    <button type="submit" disabled={reviewData.content === ""} className={styles.button}>
                         Post Review
                     </button>
                 </div>
@@ -74,5 +77,4 @@ export default function CreateReview() {
         </section>
 
     )
-
 }

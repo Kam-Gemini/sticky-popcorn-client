@@ -1,5 +1,134 @@
-textarea {
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem; 
+    border-color: inherit;
+}
+
+.header h1 {
+    font-family: "Bebas Neue", sans-serif;
+    color:var(--text-primary);
+}
+
+.reviewCard {
+    padding: 1rem;
+    border-top: 2px solid var(--border);
+    border-bottom: 1px solid var(--border);
+
+}
+
+.reviewCard p.reviewContent {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 1.4rem;
+    font-weight: bold;
+    color:var(--text-primary);
+}
+
+.reviewCard p {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 1.1rem;
+    font-weight: bold;
+    color:var(--text-secondary);
+}
+
+.authorName {
+    font-family: "Bebas Neue", sans-serif;
+    color:var(--text-primary);
+}
+
+
+.author {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 20px;
+    color: var(--text-secondary);
+}
+
+
+.reviewDate {
+    font-family: "Bebas Neue", sans-serif;
+    color: var(--text-secondary);
+    font-size: 1em;
+}
+
+.reviewLink {
+    font-family: "Bebas Neue", sans-serif;
+    color:var(--text-primary);
+    font-size: 1rem;
+    background-color: transparent;
+    border: none;
+    padding: 1rem;
+    margin: 0;
+    text-decoration: none;
+}
+  
+.reviewLink:hover {
+    text-decoration: underline;
+}
+
+.button {
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 18px;
+    color: var(--text-primary);
+    background-color: var(--brand);
+    border: none;
+    margin: 0.4rem;
+    padding: 0.3rem 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border-radius: 5px;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+}
+
+.button:hover {
+    background-color: var(--brand-hover);
+}
+
+.button:disabled {
+    background-color: var(--brand-disabled);
+    cursor: not-allowed;
+}
+
+.reviewForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+  
+.formControl {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.reviewTextArea {
     width: 600px;
     height: 300px;
     resize: none;
+    font-family: "Cormorant Garamond", serif;
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding: 0.5rem;
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    background-color: var(--background);
+    color: var(--text-primary);
+}
+
+.reviewTextArea::placeholder {
+    color:var(--text-primary);
+    font-family: "Cormorant Garamond", serif;
+    font-size: 1.2rem;
+    opacity: 0.5;
+
+}
+
+.reviewTextArea:focus {
+    outline: 2px solid var(--brand);
+    border-color: var(--brand);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }

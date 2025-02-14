@@ -3,6 +3,16 @@ main {
     flex-direction: column;
 }
 
+.movieContainer {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    column-gap: 20px;
+    row-gap: 20px;
+    text-align: center;
+    margin: 0 20px;
+    align-items: start;
+  }
+
 .filters {
     display: flex;
     justify-content: space-around;
@@ -10,22 +20,56 @@ main {
 }
 
 .search {
+    display: flex;
+    align-items: center;
     line-height: 35px;
-}
-
-a {
-    text-decoration: none !important;
-    color: inherit; /* Optional: Ensures all links inherit the text color */
+    gap: 8px;
 }
 
 .card {
-    border: 2px solid grey;
-    border-radius: 8px;
-    padding: 20px 0;
-    background-color: lightblue;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 2px solid var(--border);
+  border-radius: 8px;
+  padding: 20px 0;
+  background-color: transparent;
+  text-align: center;
+  height: 100%; 
 }
 
 .card img {
-    max-width: 100%;
-    height: 500px;
+    width: 100%; 
+    height: auto; 
+    max-height: 500px; 
+    object-fit: cover;  
+    border-radius: 8px 8px 0 0;
+}
+
+.movieTitle {
+    margin: 10px;
+    font-family: "Bebas Neue", sans-serif;
+    color:var(--text-primary);
+
+}
+
+.movieInfo {
+    font-family: "Bebas Neue", sans-serif;
+    color:var(--text-primary);
+    font-size: 1rem;
+    background-color: transparent;
+    border: none;
+    padding: 1rem;
+    margin: 0;
+    text-decoration: none;
+}
+
+.movieLink {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    margin: 10px;
+    font-family: "Bebas Neue", sans-serif;
+    color:var(--text-primary);
+    text-decoration: none;
 }
