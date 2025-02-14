@@ -1,12 +1,11 @@
 import { useState, useContext, useEffect } from 'react'
 import { UserContext } from '../../contexts/UserContext'
 import { userWatchlistShow } from '../../services/movieService'
-import MovieGrid from './MovieGrid'
 import Filters from '../NavMenu/Filters'
 import MovieCard from './MovieCard'
 import Genre from '../NavMenu/Genre'
 import Spinner from '../Spinner/Spinner'
-import styles from '../AllMovies/AllMovies.module.css'
+import styles from './AllMovies.module.css'
 
 
 export default function Watchlist() {
