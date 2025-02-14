@@ -5,7 +5,9 @@ import { setToken } from '../../utils/auth'
 import { getUserFromToken } from '../../utils/auth'
 // import { Button } from 'react-bootstrap'
 import { UserContext } from '../../contexts/UserContext'
-import { useLocation } from "react-router-dom";
+
+import { NavHistoryContext } from '../../contexts/NavHistoryContext'
+
 // Styles
 import styles from './Signin.module.css'
 import '../../App.css'
@@ -24,10 +26,27 @@ export default function Signin(){
   const [errors, setErrors] = useState({})
 
   // Location variables
-  const navigate = useNavigate()
 
-  const location = useLocation();
-  const fromPage = location.state?.from || "unknown"
+
+  // const location = useLocation();
+  // const fromPage = location.state?.from || "unknown"
+
+  const { history } = useContext(NavHistoryContext);
+    const navigate = useNavigate();
+
+  const handleNavigate = () => {
+    console.log("HANDLE NAVIGATE")
+    const targetIndex = history.length -2
+    if (history[targetIndex] === '/'){
+      console.log('IF')
+      navigate('/')
+      // navigate('/')
+    }
+    else{
+      console.log('ELSE')
+      navigate(-2)
+    }
+  }
 
   //console.log(formData)
   // Events
@@ -40,7 +59,9 @@ export default function Signin(){
       setUser(getUserFromToken())
       // Navigate to posts page
      // navigate(fromPage !== "unknown" ? fromPage : "/")
-     navigate(-2)
+    //  navigate(-2)
+    console.log(`HISTORY ${history}`)
+    handleNavigate()
     } catch (error) {
     //   setErrors(error.response.data.errors)
       setErrors(error.message)

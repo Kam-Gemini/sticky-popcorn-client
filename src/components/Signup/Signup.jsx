@@ -38,6 +38,7 @@ export default function Signup(){
       if (history[targetIndex] === '/'){
         console.log('IF')
         navigate(-2)
+        // navigate('/')
       }
       else{
         console.log('ELSE')
