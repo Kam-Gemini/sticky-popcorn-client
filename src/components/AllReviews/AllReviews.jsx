@@ -42,17 +42,14 @@ export default function AllReviews() {
 
                                     {user?._id === review.author._id && (
                                         <div className={styles.reviewButtons}>
+                                               <p><Link to={`/movies/${movieId}/reviews/${review._id}`} className={styles.reviewLink}>
+                                                Read Full Review
+                                                </Link></p>                             
                                             <Link to={`/movies/${movieId}/reviews/${review._id}/edit`} className={styles.button}>
                                                 Edit
                                             </Link>
-                                            <button onClick={() => handleDelete(review._id)} className={styles.button}>
-                                                Delete
-                                            </button>
                                         </div>
                                     )}
-                                    <p><Link to={`/movies/${movieId}/reviews/${review._id}`} className={styles.reviewLink}>
-                                        Read Full Review
-                                    </Link></p>
                                 </div>
                             )
                         })
@@ -64,6 +61,9 @@ export default function AllReviews() {
                 <div>
                     <Link to={`/movies/${movieId}/create-review`} className={styles.button}>
                         Add your review
+                    </Link>
+                    <Link to={`/movies/${movieId}`} className={styles.button}>
+                        Back to Movie
                     </Link>
                 </div>
             </section>
