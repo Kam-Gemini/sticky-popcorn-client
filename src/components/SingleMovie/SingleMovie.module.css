@@ -67,6 +67,11 @@ main {
     border-radius: 8px 8px 0 0;
 }
 
+.movieImage {
+    width: 300px;
+    border-radius: 8px 8px 0 0 ;
+}
+
 .movieTitle {
     margin: 10px;
     font-family: "Bebas Neue", sans-serif;
