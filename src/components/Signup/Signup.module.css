@@ -1,23 +1,41 @@
 .container {
-    padding: 1rem;
+    padding-left: 25rem;
+    padding-right: 25rem;
     color: var(--text-secondary);
     font-size: .9rem;
+    display: flex;
+    flex-direction:column;
+    justify-content: center;
+    margin: 0px, 100px, 0px, 100px;
   }
   
   .container h1 {
     color: var(--text-primary);
     font-size: 1.75rem;
     margin-bottom: 1rem;
+    margin-left: 5rem;
+    margin-right: 5rem;
+    justify-items: center;
+  text-align: center;
+  font-size: 3rem;
+  }
+
+  .container p {
+    text-align: center;
   }
   
   .container div {
     margin-bottom: 1rem;
+    background-color: var(--background-secondary);
+    border:none;
   }
   
   .container div label {
     display: block;
     font-weight: bold;
     margin-bottom: .5rem;
+    color: white;
+  
   }
   
   .container div input {
@@ -44,7 +62,7 @@
     display: block;
     width: 100%;
     padding: .5rem 1rem;
-    background-color: var(--brand);
+    
     color: var(--text-primary);
     border-radius: 8px;
     border: none;
@@ -60,4 +78,40 @@
   .container form button:hover:not(:disabled) {
     background-color: var(--brand-hover);
     cursor: pointer;
+  }
+
+  .formcontrol {
+    margin: 0px, 100px, 0px, 100px;
+  
+  }
+
+  .image {
+    background-image: url(./giphy.gif);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 20px;
+    height: 10rem;
+    margin: 0px, 100px, 0px, 100px;
+  }
+  
+
+  .button {
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 18px;
+    color: var(--text-primary);
+    background-color: var(--brand);
+    border: none;
+    margin: 0.3rem;
+    padding: 0.3rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border-radius: 5px;
+  }
+  .button:hover {
+    background-color: var(--brand-hover);
+  }
+  .button:disabled {
+    background-color: var(--brand-disabled);
+    cursor: not-allowed;
   }

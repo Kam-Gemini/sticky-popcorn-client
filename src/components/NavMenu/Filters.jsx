@@ -8,6 +8,7 @@ export default function ({ filterBy, setFilterBy }) {
     return (
         <DropdownButton
         id="dropdown-basic-button"
+        variant="warning"
         title="Select Decade"
         onSelect={handleSelect}
         >
