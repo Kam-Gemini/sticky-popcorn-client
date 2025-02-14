@@ -69,7 +69,7 @@ main {
 
 .movieImage {
     width: 300px;
-    border-radius: 8px 8px 0 0 ;
+    border-radius: 8px 8px 8px 8px ;
 }
 
 .movieTitle {

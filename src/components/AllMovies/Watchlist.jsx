@@ -68,11 +68,11 @@ export default function Watchlist() {
         setSearchTerm(e.target.value.toLowerCase())
     }
 
-    return (
+return (
         <main>
-            <div className={styles.filters}>
-                <div className={styles.search}>
-                <i class="fi fi-br-search"> </i>
+            <section className={styles.filters}>
+            <div className={styles.search}>
+                <i className="fi fi-br-search"> </i>
                 <input 
                     type="search" 
                     name="search" 
@@ -84,15 +84,15 @@ export default function Watchlist() {
                 </div>
                 <Filters filterBy={filterBy} setFilterBy={setFilterBy}/>
                 <Genre selectedGenres={selectedGenres} setSelectedGenres={setSelectedGenres}/>
-            </div>
-            <MovieGrid>
-                { isLoading ? <Spinner /> : displayedMovies.length > 0  && user ? 
+                </section>
+                <div className={styles.movieContainer}>
+                { isLoading ? <Spinner /> : displayedMovies.length > 0 ? 
                     displayedMovies.map(movie => (
                         <MovieCard key={movie._id} movie={movie} />
                     ))
                     : <h3>There are no movies found. Please adjust your filters</h3>
                 }
-            </MovieGrid>
+            </div>
         </main>
     )
 }
