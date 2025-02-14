@@ -3,11 +3,12 @@ import { useNavigate } from 'react-router'
 import { signin } from '../../services/userService'
 import { setToken } from '../../utils/auth'
 import { getUserFromToken } from '../../utils/auth'
-import { Button } from 'react-bootstrap'
+// import { Button } from 'react-bootstrap'
 import { UserContext } from '../../contexts/UserContext'
 import { useLocation } from "react-router-dom";
 // Styles
 import styles from './Signin.module.css'
+import '../../App.css'
 
 export default function Signin(){
   // Context
@@ -57,11 +58,9 @@ export default function Signin(){
            <section className={styles.image}>
                
               </section>
-        <div>
-       {fromPage === '/' && <p>Welcome! You came from the home page.</p>}
-       </div>
+      
       <h1>Sign in</h1>
-      <p>Log in to your account!</p>
+     
       
       <form onSubmit={handleSubmit}>
 
@@ -96,14 +95,22 @@ export default function Signin(){
         </div>
 
      
-        <button disabled={formData.password === '' 
-            //</form>|| formData.password !== formData.confirmPassword
-            } type="submit">Submit</button>
+        {/* <button disabled={formData.password === ''  */}
+            {/* //</form>|| formData.password !== formData.confirmPassword
+            // } type="submit" className='button'>Submit</button> */}
+
+            <button 
+  disabled={!formData.password} 
+  type="submit" 
+  className="button"
+>
+  Submit
+</button>
 
       </form>
 
 
-      <Button variant="primary" onClick={() => navigate('/signup')}>Don't have an account yet? Sign up here!</Button>
+      <button onClick={() => navigate('/signup')} className='button'>Don't have an account yet? Sign up here!</button>
     </section>
   )
 }

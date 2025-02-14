@@ -4,7 +4,9 @@ import { Button } from 'react-bootstrap'
 import { useNavigate } from 'react-router'
 import { UserContext } from '../../contexts/UserContext'
 import { getToken, removeToken } from '../../utils/auth'
-// import { NavLink } from 'react-router'
+import { Link, NavLink } from 'react-router'
+import '../../App.css'
+import './NavMenu.module.css'
 
 const MainHeading = styled.div`
     display: flex;
@@ -51,28 +53,31 @@ export default function NavMenu() {
         <>
             <MainHeading>
                 <TitleImage>
-                    <Heading>Sticky Popcorn</Heading>
+                    <Link to="/">
+                    <div className="sitename">
+                    {/* <Heading className='site-name'>Sticky Popcorn</Heading> */}
+                    </div>
+                    </Link>
                     <Image src="https://res.cloudinary.com/dvp3fdavw/image/upload/v1739356536/pngimg.com_-_popcorn_PNG21_lo8zgy.png" />
                 </TitleImage>
                 {user && user._id
                 ? (
                     <>
-                        <Button variant="primary" onClick={() => navigate(`/`)}>Home</Button>
-                        <Button variant="primary" onClick={signOut}>Sign out</Button>
-                        <Button variant="primary" onClick={() => navigate(`/movies/favourites`)}>Favourites</Button>
-                        <Button variant="primary" onClick={() => navigate(`/movies/watchlist`)}>Watchlist</Button>
+                        <button onClick={() => navigate(`/movies/favourites`)}className='button'> ❤️ Favourites</button>
+                        <button onClick={() => navigate(`/movies/watchlist`)}className='button'> 📺 Watchlist</button>
+                        <button onClick={signOut}className='button'>Sign out</button>
                     </> 
                 )
                 : (
                     <>
-                        <Button variant="primary" onClick={() => navigate('/signin')}>Sign in</Button>
+                        <button onClick={() => navigate('/signin')}className='button'>Sign in</button>
                     </>
                 )
             }
                 
             </MainHeading>
             <Tagline>
-                <p>Reviews that stick with you - Freshly Popped!</p>
+                <p className='tagline'>Reviews that stick with you - Freshly Popped!</p>
             </Tagline>
         </>
     )

@@ -17,6 +17,7 @@
     margin-right: 5rem;
     justify-items: center;
   text-align: center;
+  font-size: 3rem;
   }
 
   .container p {
@@ -25,12 +26,16 @@
   
   .container div {
     margin-bottom: 1rem;
+    background-color: var(--background-secondary);
+    border:none;
   }
   
   .container div label {
     display: block;
     font-weight: bold;
     margin-bottom: .5rem;
+    color: white;
+  
   }
   
   .container div input {
@@ -57,7 +62,7 @@
     display: block;
     width: 100%;
     padding: .5rem 1rem;
-    background-color: var(--brand);
+    
     color: var(--text-primary);
     border-radius: 8px;
     border: none;
@@ -75,9 +80,9 @@
     cursor: pointer;
   }
 
-  .form-control {
+  .formcontrol {
     margin: 0px, 100px, 0px, 100px;
-    background-color: red;
+  
   }
 
   .image {
@@ -85,16 +90,28 @@
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
-    /* height:100px;
-    width: 100px; */
-    /* background-color:red; */
-    /* padding: 20px; */
     padding: 20px;
     height: 10rem;
-    /* padding-left: 25rem;
-    padding-right: 25rem; */
     margin: 0px, 100px, 0px, 100px;
   }
   
 
-  /* background-image: url(../images/giphy.webp); */
+  .button {
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 18px;
+    color: var(--text-primary);
+    background-color: var(--brand);
+    border: none;
+    margin: 0.3rem;
+    padding: 0.3rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border-radius: 5px;
+  }
+  .button:hover {
+    background-color: var(--brand-hover);
+  }
+  .button:disabled {
+    background-color: var(--brand-disabled);
+    cursor: not-allowed;
+  }

@@ -8,6 +8,7 @@ import { UserContext } from '../../contexts/UserContext'
 
 import { NavHistoryContext } from '../../contexts/NavHistoryContext'
 import styled from 'styled-components'
+import '../../App.css'
 
 
 // Styles
@@ -78,7 +79,7 @@ export default function Signup(){
        
       </section>
       <h1>Sign up</h1>
-      <p>Create an account on Sticky Popcorn!</p>
+      
       <form onSubmit={handleSubmit}>
 
      
@@ -131,7 +132,7 @@ export default function Signup(){
 
         <button disabled={formData.password === '' 
             //</form>|| formData.password !== formData.confirmPassword
-            } type="submit">Submit</button>
+            } type="submit" className='button'>Submit</button>
 
       </form>
     </section>
