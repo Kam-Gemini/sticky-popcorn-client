@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import Multiselect from 'multiselect-react-dropdown'
-import styles from '../AllMovies/AllMovies.module.css'
+import '../../App.css'
+import './NavMenu.module.css'
+
 
 export default function GenreSelector({ selectedGenres, setSelectedGenres }) {
 
@@ -30,16 +32,26 @@ export default function GenreSelector({ selectedGenres, setSelectedGenres }) {
     }
 
     return (
-        <div>
+        <div className='multiselectbox'>
+        <div className='multiselect'>
             <Multiselect
                 options={genres}
                 selectedValues={selectedGenres}
                 onSelect={onSelect}
                 onRemove={onRemove}
                 displayValue="name"
+                style={{
+                    searchBox: {
+                        opacity: 1,
+                    }
+                }}
                 showCheckbox
                 placeholder="Select Genres"
             />
+  
+
+        </div>
         </div>
     )
 }
+
