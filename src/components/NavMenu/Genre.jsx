@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import Multiselect from 'multiselect-react-dropdown'
 import '../../App.css'
-import './NavMenu.module.css'
+import styles from './NavMenu.module.css'
 
 
 export default function GenreSelector({ selectedGenres, setSelectedGenres }) {
@@ -32,7 +32,6 @@ export default function GenreSelector({ selectedGenres, setSelectedGenres }) {
     }
 
     return (
-        <div className='multiselectbox'>
         <div className='multiselect'>
             <Multiselect
                 options={genres}
@@ -48,9 +47,6 @@ export default function GenreSelector({ selectedGenres, setSelectedGenres }) {
                 showCheckbox
                 placeholder="Select Genres"
             />
-  
-
-        </div>
         </div>
     )
 }

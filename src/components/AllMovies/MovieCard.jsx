@@ -9,7 +9,7 @@ export default function MovieCard({ movie }) {
             <Link to={`/movies/${movie._id}`} className={styles.movieLink}> 
             <img src={movie.poster_url} alt={movie.title} className={styles.movieImage} />
                 <header className={styles.movieTitle}>
-                    <h3>{movie.title}</h3>
+                    <h2>{movie.title}</h2>
                 </header>
                 <section className={styles.movieInfo}>
                     <p>{movie.year}</p>

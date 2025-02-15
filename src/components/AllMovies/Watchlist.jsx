@@ -89,7 +89,7 @@ return (
                     displayedMovies.map(movie => (
                         <MovieCard key={movie._id} movie={movie} />
                     ))
-                    : <h3>There are no movies found. Please adjust your filters</h3>
+                    : <h3>There are no movies in your watchlist.</h3>
                 }
             </div>
         </main>

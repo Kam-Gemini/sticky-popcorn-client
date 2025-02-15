@@ -69,7 +69,7 @@ export default function AllMovies() {
         <main>
             <section className={styles.filters}>
             <div className={styles.search}>
-                <i className="fi fi-br-search"> </i>
+                <img src="https://res.cloudinary.com/dvp3fdavw/image/upload/v1739356535/search_sk8pc5.png" />
                 <input 
                     type="search" 
                     name="search" 
@@ -87,7 +87,7 @@ export default function AllMovies() {
                     displayedMovies.map(movie => (
                         <MovieCard key={movie._id} movie={movie} />
                     ))
-                    : <h3>There are no movies found. Please adjust your filters</h3>
+                    : <h3>There are no movies found. Please adjust your filters.</h3>
                 }
             </div>
         </main>
