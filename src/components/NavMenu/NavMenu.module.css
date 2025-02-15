@@ -41,11 +41,3 @@ a {
 .titlelink a {
   text-decoration: none;
 }
-
-.custom-multi-select .select__multi-value__label {
-  color: white;
-}
-
-.custom-multi-select .select__multi-value__remove {
-  color: white;
-}
