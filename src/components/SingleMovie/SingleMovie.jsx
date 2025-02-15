@@ -92,7 +92,6 @@ export default function SingleMovie() {
 
     const handleAddWatchlist = async (movieId) => {
         try {
-
             const response = await addUserWatchlist(movieId)
             setIsWatchlist(!isWatchlist)
 

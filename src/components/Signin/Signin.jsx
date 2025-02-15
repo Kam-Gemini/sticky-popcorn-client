@@ -12,7 +12,7 @@ import { NavHistoryContext } from '../../contexts/NavHistoryContext'
 import styles from './Signin.module.css'
 import '../../App.css'
 
-export default function Signin(){
+export default function Signin() {
   // Context
   // We need to pass the context into the useContext hook, which will give us any values set to it (in this case, user & setUser)
   const { setUser } = useContext(UserContext)
@@ -32,17 +32,17 @@ export default function Signin(){
   // const fromPage = location.state?.from || "unknown"
 
   const { history } = useContext(NavHistoryContext);
-    const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const handleNavigate = () => {
     console.log("HANDLE NAVIGATE")
-    const targetIndex = history.length -2
-    if (history[targetIndex] === '/'){
+    const targetIndex = history.length - 2
+    if (history[targetIndex] === '/') {
       console.log('IF')
       navigate('/')
       // navigate('/')
     }
-    else{
+    else {
       console.log('ELSE')
       navigate(-2)
     }
@@ -58,12 +58,12 @@ export default function Signin(){
       // Set the global user context/state
       setUser(getUserFromToken())
       // Navigate to posts page
-     // navigate(fromPage !== "unknown" ? fromPage : "/")
-    //  navigate(-2)
-    console.log(`HISTORY ${history}`)
-    handleNavigate()
+      // navigate(fromPage !== "unknown" ? fromPage : "/")
+      //  navigate(-2)
+      console.log(`HISTORY ${history}`)
+      handleNavigate()
     } catch (error) {
-    //   setErrors(error.response.data.errors)
+      //   setErrors(error.response.data.errors)
       setErrors(error.message)
     }
   }
@@ -76,61 +76,52 @@ export default function Signin(){
 
   return (
     <section className={styles.container}>
-           <section className={styles.image}>
-               
-              </section>
-      
+      <section className={styles.image}>
+      </section>
       <h1>Sign in</h1>
-     
-      
       <form onSubmit={handleSubmit}>
-
-     
-
         {/* Username */}
         <div className="form-control">
           <label htmlFor="identifier">Username or email</label>
-          <input 
+          <input
             type="text"
-            name="identifier" 
+            name="identifier"
             id="identifier"
             placeholder="Enter your username or email"
             required
             onChange={handleChange}
           />
-          { errors.identifier && <p className='error-message'>{errors.identifier}</p> }
+          {errors.identifier && <p className='error-message'>{errors.identifier}</p>}
         </div>
 
         {/* Password */}
         <div className="form-control">
           <label htmlFor="password">Password</label>
-          <input 
+          <input
             type="password"
-            name="password" 
+            name="password"
             id="password"
             placeholder="Enter a password"
             required
             onChange={handleChange}
           />
-          { errors.password && <p className='error-message'>{errors.password}</p> }
+          {errors.password && <p className='error-message'>{errors.password}</p>}
         </div>
 
-     
+
         {/* <button disabled={formData.password === ''  */}
-            {/* //</form>|| formData.password !== formData.confirmPassword
+        {/* //</form>|| formData.password !== formData.confirmPassword
             // } type="submit" className='button'>Submit</button> */}
 
-            <button 
-  disabled={!formData.password} 
-  type="submit" 
-  className="button"
->
-  Submit
-</button>
+        <button
+          disabled={!formData.password}
+          type="submit"
+          className="button"
+        >
+          Submit
+        </button>
 
       </form>
-
-
       <button onClick={() => navigate('/signup')} className='button'>Don't have an account yet? Sign up here!</button>
     </section>
   )
