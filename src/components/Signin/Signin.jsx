@@ -122,7 +122,7 @@ export default function Signin() {
         </button>
 
       </form>
-      <button onClick={() => navigate('/signup')} className='button'>Don't have an account yet? Sign up here!</button>
+      <button onClick={() => navigate('/signup')} className={styles.button}>Don't have an account yet? Sign up here!</button>
     </section>
   )
 }

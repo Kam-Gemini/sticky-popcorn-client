@@ -76,15 +76,9 @@ export default function Signup(){
 
   return (
     <section className={styles.container}>
-      <section className={styles.image}>
-       
-      </section>
-      <h1>Sign up</h1>
-      
+      <section className={styles.image}></section>
+      <h1 className={styles.heading}>Sign up</h1>
       <form onSubmit={handleSubmit}>
-
-     
-
         {/* Username */}
         <div className="form-control">
           <label htmlFor="username">Username</label>
