@@ -12,7 +12,7 @@ const MainHeading = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin: 20px 20px;
+    margin: 30px 230px;
 `
 const TitleImage = styled.div`
     display: flex;
@@ -72,7 +72,7 @@ export default function NavMenu() {
                     )
                     : ( !isSignedIn &&
                         <>
-                            <button onClick={handleSignin} className='button'>Sign in</button>
+                            <button onClick={handleSignin} className={styles.button}>Sign in</button>
                         </>
                     )
                     }
