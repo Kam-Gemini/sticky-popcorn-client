@@ -102,14 +102,14 @@ export default function SingleMovie() {
                 throw new Error("Incorrect movie id")
             }
 
-            } catch (error) {
-                if (error.response && error.response.data && error.response.data.errors) {
-                    setError(error.response.data.errors)
-                } else {
-                    setError({ general: "Something went wrong. Please try again." })
-                }
+        } catch (error) {
+            if (error.response && error.response.data && error.response.data.errors) {
+                setError(error.response.data.errors)
+            } else {
+                setError({ general: "Something went wrong. Please try again." })
             }
         }
+    }
 
     return (
         <section className={styles.movie}>
