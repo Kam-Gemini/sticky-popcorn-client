@@ -14,7 +14,7 @@ We decided to build a movies database, allowing users to filter movies and add t
 
 https://sticky-popcorn.netlify.app/
 
-<img src="src/assets/sticky-popcorn-site.png" alt="Screenshot"/>
+<img src="src/assets/sticky-popcorn-site.png" alt="Sticky Popcorn App"/>
 
 ## **Brief**
 
