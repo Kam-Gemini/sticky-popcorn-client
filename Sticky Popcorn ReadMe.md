@@ -330,7 +330,7 @@ With this implemented, user’s are now able to click on the favourite or watchl
 
 ## 🎬 Favourites and Watchlist 
 
-![Add Movie to Favourites/Watchlist](src/assets/favourites-watchlist.gif)
+![Add Movie to Favourites/Watchlist](src/assets/favs-watchlist.gif)
 
 As we each completed our sections we moved on to styling our respective components. I had implemented some basic placeholder styling to all my components as I went along but gave Mai and Claire the freedom to style my components as they saw fit, allowing me to focus on implementing the above feature.
 
