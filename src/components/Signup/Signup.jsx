@@ -3,17 +3,12 @@ import { useNavigate } from 'react-router'
 import { signup } from '../../services/userService'
 import { setToken } from '../../utils/auth'
 import { getUserFromToken } from '../../utils/auth'
-
 import { UserContext } from '../../contexts/UserContext'
-
 import { NavHistoryContext } from '../../contexts/NavHistoryContext'
-import styled from 'styled-components'
-import '../../App.css'
-
 
 // Styles
+import '../../App.css'
 import styles from './Signup.module.css'
-//import styled from 'styled-components'
 
 export default function Signup(){
   // Context
@@ -24,29 +19,21 @@ export default function Signup(){
   const [formData, setFormData] = useState({
     username: '',
     email: '',
-    password: ''
+    password: '',
+    confirmPassword: ''
   })
   const [errors, setErrors] = useState({})
+  const [signInShow, setSignInShow] = useState(false)
+  const [isSignedIn, setIsSignedIn] = useState(false) 
 
   // Location variables
-
     const { history } = useContext(NavHistoryContext);
-    const navigate = useNavigate();
+    const navigate = useNavigate()
 
     const handleNavigate = () => {
-      const targetIndex = history.length -3
-      if (history[targetIndex] === '/'){
-        console.log('IF')
-        navigate(-2)
-        // navigate('/')
-      }
-      else{
-        console.log('ELSE')
-        navigate(-3)
-      }
+      navigate('/')
     }
 
-  //console.log(formData)
   // Events
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -55,8 +42,6 @@ export default function Signup(){
       setToken(data.token)
       // Set the global user context/state
       setUser(getUserFromToken())
-      // Navigate to posts page
-      console.log(`HISTORY ${history}`)
       handleNavigate()
       
     } catch (error) {
@@ -69,11 +54,7 @@ export default function Signup(){
     setErrors({ ...errors, [e.target.name]: '' })
     setFormData({ ...formData, [e.target.name]: e.target.value })
   }
-
-// const SignupForm = styled.section`
-//  display: flex;
-// `
-
+  
   return (
     <section className={styles.container}>
       <section className={styles.image}></section>
@@ -121,22 +102,24 @@ export default function Signup(){
           { errors.password && <p className='error-message'>{errors.password}</p> }
         </div>
 
-     
-     
-       
+        <div className="form-control">
+          <label htmlFor="confirmPassword">Confirm Password</label>
+          <input 
+            type="password"
+            name="confirmPassword" 
+            id="confirmPassword"
+            placeholder="Re-type your password"
+            required
+            onChange={handleChange}
+          />
+          { errors.password && <p className='error-message'>{errors.password}</p> }
+          {(formData.password.length > 0 && formData.confirmPassword > 0 || formData.password !== formData.confirmPassword) &&
+                    <p className='error-block'>Passwords do not match</p>
+                }
+                </div>
 
-        <button disabled={formData.password === '' 
-            //</form>|| formData.password !== formData.confirmPassword
-            } type="submit" className='button'>Submit</button>
-
-      </form>
+                <button disabled={formData.password === '' || formData.password !== formData.confirmPassword} type="submit" className='button'>Submit</button>
+            </form>
     </section>
   )
 }
-
-// export default function SignUp(){
-
-// return(
-//   <h1>Sign up</h1>
-// )
-// }

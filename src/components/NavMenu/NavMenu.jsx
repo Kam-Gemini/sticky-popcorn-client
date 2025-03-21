@@ -32,45 +32,54 @@ const Tagline = styled.div`
 
 export default function NavMenu() {
     const navigate = useNavigate()
+    const [signInShow, setSignInShow] = useState(true)
     const [isSignedIn, setIsSignedIn] = useState(false) 
     const { user, setUser } = useContext(UserContext)
 
     const signOut = () => {
         removeToken()
         setUser(null)
-        setIsSignedIn(false)
+        setSignInShow(true)
         setTimeout(() => navigate('/'), 100)
     }
 
     const handleSignin = () => {
-        setIsSignedIn(true)
         navigate('/signin')
+        setSignInShow(false)
     }
+
+    // Reset signInShow when navigating back to the main page
+    useEffect(() => {
+        if (location.pathname !== '/signin' && location.pathname !== '/signup') {
+            setSignInShow(true)
+        }
+    }, [location.pathname])
 
     return (
         <>
             <MainHeading>
-                <TitleImage className={styles.titlelink}>
-                        <Link to="/">
-                        <div>
-                            <Heading className='site-name'>Sticky Popcorn</Heading>
-                            <Tagline><p className={styles.tagline}>Reviews that stick with you - Freshly Popped!</p></Tagline>
-                        </div>
-                        <div>
-                            <Image src="https://res.cloudinary.com/dvp3fdavw/image/upload/v1739356536/pngimg.com_-_popcorn_PNG21_lo8zgy.png" />
-                        </div>
-                        </Link>
-                </TitleImage>
+                { signInShow &&
+                    <TitleImage className={styles.titlelink}>
+                            <Link to="/">
+                            <div>
+                                <Heading className='site-name'>Sticky Popcorn</Heading>
+                                <Tagline><p className={styles.tagline}>Reviews that stick with you - Freshly Popped!</p></Tagline>
+                            </div>
+                            <div>
+                                <Image src="https://res.cloudinary.com/dvp3fdavw/image/upload/v1739356536/pngimg.com_-_popcorn_PNG21_lo8zgy.png" />
+                            </div>
+                            </Link>
+                    </TitleImage>}
                 <div>
                     {user && user._id
                     ? (
                         <>
                             <button onClick={() => navigate(`/movies/favourites`)}className='button'> ❤️ Favourites</button>
                             <button onClick={() => navigate(`/movies/watchlist`)}className='button'> 📺 Watchlist</button>
-                            <button onClick={signOut}className='button'>Sign out</button>
+                            <button onClick={signOut} className={styles.button}>Sign out</button>
                         </> 
                     )
-                    : ( !isSignedIn &&
+                    : ( !isSignedIn && signInShow &&
                         <>
                             <button onClick={handleSignin} className={styles.button}>Sign in</button>
                         </>

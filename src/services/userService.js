@@ -21,6 +21,7 @@ export const signin = async (formData) => {
         const res = await axios.post(BASE_URL + '/signin', formData)
         return res.data
     } catch (error) {
-        throw new error
+        console.log(error)
+        throw error
     }
 }

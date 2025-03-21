@@ -19,37 +19,25 @@ export default function Signin() {
 
   // State
   const [formData, setFormData] = useState({
-    username: '',
-    email: '',
+    identifier: '',
     password: ''
   })
+  const [signInShow, setSignInShow] = useState(true)
+  const [isSignedIn, setIsSignedIn] = useState(false) 
   const [errors, setErrors] = useState({})
-
-  // Location variables
-
-
-  // const location = useLocation();
-  // const fromPage = location.state?.from || "unknown"
-
-  const { history } = useContext(NavHistoryContext);
-  const navigate = useNavigate();
+  const { history } = useContext(NavHistoryContext)
+  const navigate = useNavigate()
 
   const handleNavigate = () => {
-    console.log("HANDLE NAVIGATE")
-    const targetIndex = history.length - 2
-    if (history[targetIndex] === '/') {
-      console.log('IF')
       navigate('/')
-      // navigate('/')
-    }
-    else {
-      console.log('ELSE')
-      navigate(-2)
-    }
+      setSignInShow(true)
   }
 
-  //console.log(formData)
-  // Events
+  const handleRegisterAccount = () => {
+    setSignInShow(false)
+    navigate('/signup')
+  }
+
   const handleSubmit = async (e) => {
     e.preventDefault()
     try {
@@ -57,19 +45,16 @@ export default function Signin() {
       setToken(data.token)
       // Set the global user context/state
       setUser(getUserFromToken())
-      // Navigate to posts page
-      // navigate(fromPage !== "unknown" ? fromPage : "/")
-      //  navigate(-2)
+      setSignInShow(false)
+      setIsSignedIn(true)
       console.log(`HISTORY ${history}`)
       handleNavigate()
     } catch (error) {
-      //   setErrors(error.response.data.errors)
-      setErrors(error.message)
+      setErrors(error.response.data)
     }
   }
 
   const handleChange = (e) => {
-    //console.dir(e.target)
     setErrors({ ...errors, [e.target.name]: '' })
     setFormData({ ...formData, [e.target.name]: e.target.value })
   }
@@ -91,7 +76,6 @@ export default function Signin() {
             required
             onChange={handleChange}
           />
-          {errors.identifier && <p className='error-message'>{errors.identifier}</p>}
         </div>
 
         {/* Password */}
@@ -105,14 +89,9 @@ export default function Signin() {
             required
             onChange={handleChange}
           />
-          {errors.password && <p className='error-message'>{errors.password}</p>}
+          {errors.message && <p className='error-block'>{errors.message}</p>}
         </div>
-
-
-        {/* <button disabled={formData.password === ''  */}
-        {/* //</form>|| formData.password !== formData.confirmPassword
-            // } type="submit" className='button'>Submit</button> */}
-
+        
         <button
           disabled={!formData.password}
           type="submit"
@@ -122,7 +101,7 @@ export default function Signin() {
         </button>
 
       </form>
-      <button onClick={() => navigate('/signup')} className={styles.button}>Don't have an account yet? Sign up here!</button>
+      <button onClick={handleRegisterAccount} className={styles.button}>Don't have an account yet? Sign up here!</button>
     </section>
   )
 }
