@@ -27,7 +27,6 @@ export default function SingleMovie() {
         async function getMovie() {
             try {
                 const data = await movieShow(movieId)
-                console.log("Movie data:", data)
                 setMovie(data)
                 setIsFavourite(data?.favouritedBy?.some(fb => user && fb._id === user._id));
                 setIsWatchlist(data?.watchlistBy?.some(wb => user && wb._id === user._id));
@@ -50,7 +49,6 @@ export default function SingleMovie() {
     useEffect(() => {
         reviewIndex(movieId)
             .then((reviews) => {
-                console.log("Fetched reviews:", reviews);
                 if (reviews && reviews.length > 0) {
                     const randomIndex = Math.floor(Math.random() * reviews.length)
                     const selectedReview = reviews[randomIndex]

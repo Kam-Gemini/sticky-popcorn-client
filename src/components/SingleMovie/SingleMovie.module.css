@@ -2,6 +2,7 @@
     display: flex;
     justify-content: center;
     gap: 30px;
+    margin-top: 20px;
 }
 
 .rating {
@@ -73,16 +74,18 @@ main {
 }
 
 .movieTitle {
-    margin: 10px;
+    margin: 0 0 0 10px;
     font-family: "Bebas Neue", sans-serif;
     color:var(--text-primary);
+    font-size: 3rem;
 
 }
 
 .movieInfo {
     font-family: "Bebas Neue", sans-serif;
     color:var(--text-primary);
-    font-size: 1rem;
+    font-size: 1.5rem;
+    line-height: 1rem;
     background-color: transparent;
     border: none;
     padding: 1rem;
@@ -137,6 +140,7 @@ main {
     align-items: center;
     height: 30bh;
     width: 100%;
+    margin: 10px 0 10px 10px;
 }
 
 .reviewContent {
