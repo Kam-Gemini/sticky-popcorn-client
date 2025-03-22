@@ -1,8 +1,12 @@
-.header {
+.allReviewsContainer {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem; 
+    flex-direction: column;
+    align-items: left;
+    margin: 0 230px;
+    gap: 20px;
+}
+
+.header {
     border-color: inherit;
 }
 
@@ -12,6 +16,7 @@
 }
 
 .reviewCard {
+    align-items: left;
     padding: 1rem;
     border-top: 2px solid var(--border);
     border-bottom: 1px solid var(--border);
@@ -57,7 +62,6 @@
     font-size: 1rem;
     background-color: transparent;
     border: none;
-    padding: 1rem;
     margin: 0;
     text-decoration: none;
 }

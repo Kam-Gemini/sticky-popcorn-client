@@ -43,8 +43,8 @@ export default function SingleReview() {
         }
 
     return (
-        <>
-        <section className={styles.header}>
+        <section className={styles.fullReviewContainer}>
+            <section className={styles.header}>
             <h1>A review by {review?.author?.username}</h1>
             </section>
 
@@ -88,6 +88,6 @@ export default function SingleReview() {
                     </Link>
                     </div>
                     </section>
-        </>
+        </section>
     )
 }

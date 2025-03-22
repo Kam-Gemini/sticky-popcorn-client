@@ -50,9 +50,8 @@ export default function CreateReview() {
     return (
         <section className={styles.createReviewContainer}>
             <div className={styles.header}>
-            <h1>Add your review!</h1>
+                <h1>Add your review!</h1>
             </div>
-            
             <form onSubmit={handleSubmit} className={styles.reviewForm}>
                 <div className={styles.formControl}>
                     <label hidden htmlFor="content">Content</label>
@@ -64,7 +63,6 @@ export default function CreateReview() {
                     onChange={handleChange} >
                     </textarea>
                 </div>
-
                 <div>
                     <Link to={`/movies/${movieId}`} className={styles.button}>
                         Cancel

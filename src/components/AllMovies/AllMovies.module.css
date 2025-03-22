@@ -65,11 +65,15 @@ main {
     text-decoration: none;
 }
 
+.movieInfo p {
+    line-height: 0.65rem;
+}
+
 .movieLink {
     display: flex;
     height: 100%;
     flex-direction: column;
-    margin: 10px;
+    margin: 10px 10px 0 10px;
     font-family: "Bebas Neue", sans-serif;
     color:var(--text-primary);
     text-decoration: none;

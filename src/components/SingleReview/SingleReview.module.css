@@ -1,7 +1,11 @@
-.header {
+.fullReviewContainer {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: column;
+    align-items: left;
+    margin: 20px 230px 0 230px;
+}
+
+.header {
     padding: 1rem; 
     border-color: inherit;
 }

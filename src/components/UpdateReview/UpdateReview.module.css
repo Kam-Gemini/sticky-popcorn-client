@@ -1,9 +1,12 @@
-.header {
+.updateReviewContainer {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem; 
-    border-color: inherit;
+    flex-direction: column;
+    align-items: left;
+    margin: 20px 230px 0 230px;
+}
+
+.header {
+    margin: 0 0 -20px 330px;
 }
 
 .header h1 {

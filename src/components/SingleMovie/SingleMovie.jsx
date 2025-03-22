@@ -27,9 +27,10 @@ export default function SingleMovie() {
         async function getMovie() {
             try {
                 const data = await movieShow(movieId)
+                console.log("Movie data:", data)
                 setMovie(data)
-                setIsFavourite(data?.favouritedBy?.some(fb => fb._id === user._id))
-                setIsWatchlist (data?.watchlistBy?.some(wb => wb._id === user._id))
+                setIsFavourite(data?.favouritedBy?.some(fb => user && fb._id === user._id));
+                setIsWatchlist(data?.watchlistBy?.some(wb => user && wb._id === user._id));
             } catch (error) {
                 if (error.status === 400) {
                     setError('Movie not found.')
@@ -49,17 +50,19 @@ export default function SingleMovie() {
     useEffect(() => {
         reviewIndex(movieId)
             .then((reviews) => {
-                if (reviews.length > 0) {
+                console.log("Fetched reviews:", reviews);
+                if (reviews && reviews.length > 0) {
                     const randomIndex = Math.floor(Math.random() * reviews.length)
-                    setRandomReview(reviews[randomIndex])
+                    const selectedReview = reviews[randomIndex]
+                    setRandomReview(selectedReview);
+                } else {
+                    setRandomReview(null); // Explicitly set to null if no reviews
                 }
             })
             .catch((error) => {
-                console.error('Error fetching reviews:', error)
-            })
-    }, [movieId])
-
-
+                setRandomReview(null); // Handle errors gracefully
+            });
+    }, [movieId]);
 
     if (isLoading) {
         return <p>Loading...</p>;
